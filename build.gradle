@@ -1,0 +1,33 @@
+buildscript {
+    ext {
+        kotlinVersion = '1.8.22'
+        navigationVersion = '2.3.2'
+    }
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:7.2.2"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion"
+        classpath "com.google.gms:google-services:4.3.4"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            url 'https://dl.bintray.com/microsoftazuremobile/SDK'
+        }
+        maven {
+            url 'https://dl.bintray.com/microsoftazuremobile/SDK'
+        }
+    }
+}
+
+tasks.register('clean', Delete) {
+    delete rootProject.buildDir
+}

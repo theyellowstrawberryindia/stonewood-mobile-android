@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/backgroundWhite">
+
+    <uk.co.savills.stonewood.util.customview.EmptyView
+        android:id="@+id/emptyViewValidations"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:header="@string/no_validations"
+        app:image="@drawable/ic_no_project"
+        android:visibility="gone" />
+
+    <uk.co.savills.stonewood.util.customview.AppRecyclerView
+        android:id="@+id/categoriesValidations"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/paneSeparatorValidations"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/paneSeparatorValidations"
+        android:layout_width="@dimen/separator_size"
+        android:layout_height="match_parent"
+        android:background="@color/separator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.21"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+        android:id="@+id/categoryTitleValidations"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="28dp"
+        android:layout_marginHorizontal="@dimen/margin_standard"
+        android:fontFamily="@font/black"
+        android:textSize="@dimen/text_size_xlarge"
+        app:layout_constraintStart_toEndOf="@+id/paneSeparatorValidations"
+        tools:text="Stock vs Energy" />
+
+    <uk.co.savills.stonewood.util.customview.AppRecyclerView
+        android:id="@+id/elementsValidations"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:paddingVertical="12dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/paneSeparatorValidations"
+        app:layout_constraintTop_toBottomOf="@id/categoryTitleValidations" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

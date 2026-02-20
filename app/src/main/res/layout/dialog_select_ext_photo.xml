@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="uk.co.savills.stonewood.screen.survey.survey.energy.selectexternalphoto.SelectExternalPhotoViewModel" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <uk.co.savills.stonewood.util.customview.StandardToolbar
+            android:id="@+id/toolbarSelectExtPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            app:title="@string/external_photos_title" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/backgroundWhite"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/searchSelectExtPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_standard"
+                android:layout_marginTop="20dp"
+                android:background="@color/backgroundGray"
+                android:fontFamily="@font/light"
+                android:hint="@string/search_hint"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:paddingHorizontal="16dp"
+                android:paddingTop="13dp"
+                android:paddingBottom="16dp"
+                android:text="@={viewModel.searchText}"
+                android:textColorHint="@color/textLight"
+                android:textSize="@dimen/text_size_medium" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorPrimary">
+
+                <TextView
+                    android:id="@+id/addressLabelSelectExtPhoto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="6dp"
+                    android:fontFamily="@font/bold"
+                    android:textColor="@color/textWhite"
+                    android:textSize="@dimen/text_size_xsmall"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/columnSeparator1SelectExtPhoto"
+                    app:layout_constraintHorizontal_bias="0.515"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="@string/address" />
+
+                <View
+                    android:id="@+id/columnSeparator1SelectExtPhoto"
+                    android:layout_width="@dimen/separator_size"
+                    android:layout_height="0dp"
+                    android:background="@color/separator"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.35"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/postCodeLabelSelectExtPhoto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/bold"
+                    android:textColor="@color/textWhite"
+                    android:textSize="@dimen/text_size_xsmall"
+                    app:layout_constraintEnd_toStartOf="@+id/columnSeparator2SelectExtPhoto"
+                    app:layout_constraintStart_toEndOf="@+id/columnSeparator1SelectExtPhoto"
+                    app:layout_constraintTop_toTopOf="@+id/addressLabelSelectExtPhoto"
+                    android:text="@string/post_code" />
+
+                <View
+                    android:id="@+id/columnSeparator2SelectExtPhoto"
+                    android:layout_width="@dimen/separator_size"
+                    android:layout_height="0dp"
+                    android:background="@color/separator"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/surveyorLabelSelectExtPhoto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/bold"
+                    android:textColor="@color/textWhite"
+                    android:textSize="@dimen/text_size_xsmall"
+                    app:layout_constraintEnd_toStartOf="@+id/columnSeparator3SelectExtPhoto"
+                    app:layout_constraintStart_toEndOf="@+id/columnSeparator2SelectExtPhoto"
+                    app:layout_constraintTop_toTopOf="@+id/addressLabelSelectExtPhoto"
+                    android:text="@string/surveyor" />
+
+                <View
+                    android:id="@+id/columnSeparator3SelectExtPhoto"
+                    android:layout_width="@dimen/separator_size"
+                    android:layout_height="0dp"
+                    android:background="@color/separator"
+                    android:textSize="@dimen/text_size_xsmall"
+                    android:fontFamily="@font/bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.7"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/photosLabelSelectExtPhoto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/bold"
+                    android:textColor="@color/textWhite"
+                    android:textSize="@dimen/text_size_xsmall"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/columnSeparator3SelectExtPhoto"
+                    app:layout_constraintTop_toTopOf="@+id/addressLabelSelectExtPhoto"
+                    android:text="@string/photos" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/separatorPropertyList">
+
+                <uk.co.savills.stonewood.util.customview.EmptyView
+                    android:id="@+id/emptyViewSelectExtPhoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/backgroundWhite"
+                    app:header="@string/data_empty_view_header"
+                    app:image="@drawable/ic_no_address"
+                    android:visibility="gone"
+                    app:visibility="@{viewModel.data}" />
+
+                <uk.co.savills.stonewood.util.customview.AppRecyclerView
+                    android:id="@+id/dataSelectExtPhoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            </FrameLayout>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

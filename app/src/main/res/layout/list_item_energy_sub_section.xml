@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="12dp">
+
+        <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+            android:id="@+id/titleEnergySubSection"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/bold"
+            android:textSize="@dimen/text_size_xsmall"
+            android:textAlignment="textEnd"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintBottom_toTopOf="@+id/copyTextEnergySubSection"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineEnergySubSection"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/elementGridEnergySubSection"
+            app:letterSpacingMultiplier="0.2" />
+
+        <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+            android:id="@+id/copyTextEnergySubSection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/background_copy_entries"
+            android:drawableEnd="@drawable/ic_up_arrow"
+            android:drawablePadding="3dp"
+            android:padding="5dp"
+            android:text="@string/copy"
+            android:textColor="@color/textWhite"
+            android:textSize="@dimen/text_size_xsmall"
+            app:layout_constraintBottom_toBottomOf="@id/elementGridEnergySubSection"
+            app:layout_constraintEnd_toEndOf="@+id/titleEnergySubSection"
+            app:layout_constraintTop_toBottomOf="@+id/titleEnergySubSection" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineEnergySubSection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.20" />
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/elementGridEnergySubSection"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:flexWrap="wrap"
+            app:justifyContent="space_between"
+            app:showDividerHorizontal="middle"
+            app:dividerDrawableHorizontal="@drawable/divider_flex_box"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guidelineEnergySubSection"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,129 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-parcelize'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+apply plugin: 'com.google.gms.google-services'
+//apply from: "../thumbmunkeys_ruleset.gradle"
+
+android {
+    namespace "uk.co.savills.stonewood"
+    compileSdkVersion 34
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "uk.co.savills.stonewood"
+        minSdkVersion 26
+        targetSdkVersion 34
+        versionCode versCode as Integer
+        versionName versName
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            zipAlignEnabled true
+        }
+
+        staging {
+            initWith release
+        }
+
+        development {
+            initWith release
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+//    lintOptions {
+//        ignore "Autofill", "ContentDescription", "HardcodedDimen", "PluralsCandidate",
+//                "LockedOrientationActivity", "NonResizeableActivity", "ParcelCreator",
+//                "IconDuplicates", "DefaultLocale", "UnusedIds",
+//                "Typos", "StringFormatInvalid"
+//
+//        informational "NewerVersionAvailable", "GradleDependency", "OldTargetApi", "UnusedResources"
+//    }
+
+    buildFeatures {
+        dataBinding true
+        viewBinding true
+    }
+}
+
+dependencies {
+    ext {
+        coreKtxVersion = '1.3.2'
+        appCompatVersion = '1.2.0'
+        constraintLayoutVersion = '2.0.4'
+        fragmentVersion = "1.3.0-rc01"
+        lifecycleVersion = '2.3.0-rc01'
+        securityVersion = '1.1.0-alpha03'
+        roomVersion = '2.6.1'
+        viewpagerVersion = "1.0.0"
+        pagingVersion = '3.1.0-beta01'
+        swipeRefreshVersion = '1.1.0'
+        exifInterface = '1.3.2'
+        workManagerVersion = "2.7.1"
+
+        playServicesVersion = '17.1.0'
+        materialVersion = '1.3.0-beta01'
+        flexboxVersion = '3.0.0'
+        firebaseMessagingVersion = '21.0.1'
+
+        okHttpVersion = '4.9.0'
+        retrofitVersion = '2.9.0'
+        moshiVersion = '1.15.0'
+
+        appCenterVersion = '4.1.0'
+        azureNotificationVersion = '1.1.2@aar'
+    }
+
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+
+    implementation "androidx.core:core-ktx:$coreKtxVersion"
+    implementation "androidx.appcompat:appcompat:$appCompatVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    implementation "androidx.fragment:fragment-ktx:$fragmentVersion"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+    implementation "androidx.security:security-crypto:$securityVersion"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+    implementation "androidx.room:room-runtime:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
+    implementation "androidx.room:room-paging:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
+    implementation "androidx.viewpager2:viewpager2:$viewpagerVersion"
+    implementation "androidx.paging:paging-runtime-ktx:$pagingVersion"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swipeRefreshVersion"
+    implementation "androidx.exifinterface:exifinterface:$exifInterface"
+    implementation "androidx.work:work-runtime-ktx:$workManagerVersion"
+
+    implementation "com.google.android.gms:play-services-location:$playServicesVersion"
+    implementation "com.google.android.material:material:$materialVersion"
+    implementation "com.google.android.flexbox:flexbox:$flexboxVersion"
+    implementation "com.google.firebase:firebase-messaging:$firebaseMessagingVersion"
+
+    implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
+    implementation "com.squareup.moshi:moshi:$moshiVersion"
+    implementation "com.squareup.moshi:moshi-kotlin:$moshiVersion"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
+
+    implementation "com.microsoft.appcenter:appcenter-crashes:$appCenterVersion"
+    implementation "com.microsoft.appcenter:appcenter-analytics:$appCenterVersion"
+    implementation "com.microsoft.azure:notification-hubs-android-sdk:$azureNotificationVersion"
+}

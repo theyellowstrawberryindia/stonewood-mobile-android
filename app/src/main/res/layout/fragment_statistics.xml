@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageButton
+        android:id="@+id/backButtonStatistics"
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="@dimen/margin_standard"
+        android:adjustViewBounds="true"
+        android:background="@color/transparent"
+        android:foreground="?attr/selectableItemBackground"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="10dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_back"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayoutStatistics"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:clipToPadding="false"
+        android:paddingHorizontal="11dp"
+        app:tabIndicatorColor="@color/colorSecondary"
+        app:tabIndicatorFullWidth="false"
+        app:tabIndicatorHeight="5dp"
+        app:tabPaddingBottom="22dp"
+        app:tabPaddingEnd="13dp"
+        app:tabPaddingStart="13dp"
+        app:tabSelectedTextColor="@color/textWhite"
+        app:tabTextAppearance="@style/TabLayoutTextAppearance"
+        app:layout_constraintTop_toBottomOf="@id/backButtonStatistics" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/pagerStatistics"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/backgroundWhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tabLayoutStatistics" />
+</androidx.constraintlayout.widget.ConstraintLayout>

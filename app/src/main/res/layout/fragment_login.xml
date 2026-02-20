@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="loginViewModel"
+            type="uk.co.savills.stonewood.screen.login.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".screen.login.LoginFragment">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/margin_standard"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_logo"
+            app:layout_constraintBottom_toTopOf="@+id/bottomLayoutLogin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_max="180dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_max="180dp" />
+
+        <LinearLayout
+            android:id="@+id/bottomLayoutLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/backgroundWhite"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="UselessParent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_standard"
+                android:orientation="vertical">
+
+                <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="@font/black"
+                    android:text="@string/login_header"
+                    android:textSize="@dimen/text_size_xxx_large"
+                    app:letterSpacingMultiplier="0.37" />
+
+                <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                    style="@style/EditTextHintStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="46dp"
+                    android:labelFor="@+id/emailEditTextLogin"
+                    android:text="@string/email" />
+
+                <EditText
+                    android:id="@+id/emailEditTextLogin"
+                    style="@style/EditTextStyle.SingleLine"
+                    android:layout_marginTop="15dp"
+                    android:imeOptions="actionNext"
+                    android:inputType="textEmailAddress"
+                    android:text="@={loginViewModel.email}" />
+
+                <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                    style="@style/EditTextHintStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="27dp"
+                    android:labelFor="@+id/passwordEditTextLogin"
+                    android:text="@string/password" />
+
+                <EditText
+                    android:id="@+id/passwordEditTextLogin"
+                    style="@style/EditTextStyle.SingleLine"
+                    android:layout_marginTop="15dp"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:text="@={loginViewModel.password}" />
+
+                <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:fontFamily="@font/regular"
+                    android:onClick="@{() -> loginViewModel.onForgotPasswordClick()}"
+                    android:paddingVertical="8dp"
+                    android:text="@string/forgot_password"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="@dimen/text_size_medium"
+                    android:textStyle="bold"
+                    app:letterSpacingMultiplier="0.4" />
+            </LinearLayout>
+
+            <uk.co.savills.stonewood.util.customview.BottomButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="42dp"
+                android:onClick="@{() -> loginViewModel.login()}"
+                app:isEnabled="@{loginViewModel.canLogin}"
+                app:isLoading="@{loginViewModel.isBusy}"
+                app:text="@string/login" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="64dp"
+        android:background="@color/backgroundWhite">
+
+        <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+            android:id="@+id/titlePhotoRequired"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="34dp"
+            android:fontFamily="@font/black"
+            android:text="@string/photo_required_dialog_header"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textSize="@dimen/text_size_xx_large"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:letterSpacingMultiplier="0.2" />
+
+        <ImageView
+            android:id="@+id/iconPhotoRequired"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_front_door_photo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titlePhotoRequired" />
+
+        <TextView
+            android:id="@+id/assessmentLabelPhotoRequired"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="3dp"
+            android:maxLines="2"
+            android:text="@string/risk_assessment"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toTopOf="@+id/messagePhotoRequired"
+            app:layout_constraintEnd_toStartOf="@+id/assessmentPhotoRequired"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/iconPhotoRequired"
+            app:layout_constraintTop_toTopOf="@+id/iconPhotoRequired"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/hyphenPhotoRequired"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:maxLines="2"
+            android:text="-"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toBottomOf="@+id/assessmentLabelPhotoRequired"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/assessmentLabelPhotoRequired"
+            app:layout_constraintTop_toTopOf="@id/assessmentLabelPhotoRequired"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/assessmentPhotoRequired"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/bold"
+            android:maxLines="1"
+            android:text="@string/pass"
+            android:textAllCaps="true"
+            android:textColor="@color/complete"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toBottomOf="@+id/assessmentLabelPhotoRequired"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/hyphenPhotoRequired"
+            app:layout_constraintTop_toTopOf="@+id/assessmentLabelPhotoRequired" />
+
+        <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+            android:id="@+id/messagePhotoRequired"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/black"
+            android:text="@string/photo_required_dialog_message"
+            android:textSize="@dimen/text_size_medium"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toBottomOf="@+id/iconPhotoRequired"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/assessmentLabelPhotoRequired"
+            app:layout_constraintTop_toBottomOf="@+id/assessmentLabelPhotoRequired"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:letterSpacingMultiplier="0.2"
+            tools:ignore="UnusedIds" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrierPhotoRequired"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="messagePhotoRequired, iconPhotoRequired" />
+
+        <View
+            android:id="@+id/separatorPhotoRequired"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/separator_size"
+            android:layout_marginTop="23dp"
+            android:background="@color/separator"
+            app:layout_constraintTop_toBottomOf="@id/barrierPhotoRequired" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/separatorPhotoRequired">
+
+            <Button
+                android:id="@+id/negativeButtonPhotoRequired"
+                style="@style/DialogButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:visibility="gone" />
+
+            <View
+                android:id="@+id/buttonSeparatorPhotoRequired"
+                android:layout_width="@dimen/separator_size"
+                android:layout_height="match_parent"
+                android:background="@color/separator"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/positiveButtonPhotoRequired"
+                style="@style/DialogButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/dialog_standard_button_text" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

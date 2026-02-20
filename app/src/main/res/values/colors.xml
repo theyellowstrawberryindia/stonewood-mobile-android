@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#20243C</color>
+    <color name="colorPrimaryDark">#20243C</color>
+    <color name="colorAccent">#20243C</color>
+    <color name="colorSecondary">#FFDF01</color>
+
+    <color name="transparent">#00000000</color>
+
+    <color name="backgroundWhite">#FFFFFF</color>
+    <color name="backgroundBlack">#000000</color>
+    <color name="backgroundGray">#F4F4F7</color>
+    <color name="backgroundGraySecondary">#D6D6D6</color>
+    <color name="backgroundToolbarOption">#24AEBBFF</color>
+
+    <color name="textDefault">#000000</color>
+    <color name="textWhite">#FFFFFF</color>
+    <color name="textLight">#72000000</color>
+    <color name="textLightSecondary">#72FFFFFF</color>
+    <color name="textPrimary">#20243C</color>
+    <color name="textDisabled">#40000000</color>
+
+    <color name="buttonEnabled">@color/colorSecondary</color>
+    <color name="buttonDisabled">#F0F0F0</color>
+
+    <color name="separator">#3D979797</color>
+    <color name="separatorDark">#97979797</color>
+    <color name="border">#1E1E1E</color>
+    <color name="borderPrimary">#2A2F4F</color>
+    <color name="progress">@color/colorSecondary</color>
+
+    <color name="property_surveyed">#33C04E</color>
+    <color name="property_void">#FFC0CB</color>
+    <color name="property_private_or_refused">#BA2229</color>
+    <color name="property_failed_or_no_access">#FFDF01</color>
+    <color name="property_repeated_failed_or_no_access">#F5A623</color>
+    <color name="property_contact_available">#586ACD</color>
+
+    <color name="complete">#33C04E</color>
+    <color name="incomplete">#BA2229</color>
+</resources>

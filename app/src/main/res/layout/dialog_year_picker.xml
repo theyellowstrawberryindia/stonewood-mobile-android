@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="48dp"
+        android:background="@color/backgroundWhite"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+            android:id="@+id/titleYearPicker"
+            android:textSize="@dimen/text_size_xlarge"
+            android:fontFamily="@font/bold"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:text="@string/select_year"
+            android:textAlignment="center"
+            app:letterSpacingMultiplier="0.2"/>
+
+        <NumberPicker
+            android:id="@+id/yearYearPicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_gravity="center_horizontal"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/separator_size"
+            android:layout_marginTop="32dp"
+            android:background="@color/separator" />
+
+        <Button
+            android:id="@+id/buttonYearPicker"
+            style="@style/DialogButtonStyle"
+            android:layout_width="match_parent"
+            android:text="@string/done"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</FrameLayout>

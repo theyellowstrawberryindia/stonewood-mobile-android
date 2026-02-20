@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".screen.survey.survey.SurveyTabFragment">
+
+        <ImageButton
+            android:id="@+id/backButtonSurveyTab"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:adjustViewBounds="true"
+            android:background="@color/transparent"
+            android:foreground="?attr/selectableItemBackground"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_back"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/addressTextSurveyTab"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="@dimen/margin_standard"
+            tools:text="160 White Hart Lane, Essex"
+            android:fontFamily="@font/regular"
+            android:textSize="@dimen/text_size_large"
+            android:textColor="@color/textWhite"
+            app:layout_constraintBottom_toBottomOf="@+id/backButtonSurveyTab"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/backButtonSurveyTab"
+            app:layout_constraintTop_toTopOf="@+id/backButtonSurveyTab" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayoutSurveyTab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:clipToPadding="false"
+            android:paddingHorizontal="11dp"
+            app:tabIndicatorColor="@color/colorSecondary"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorHeight="5dp"
+            app:tabMaxWidth="0dp"
+            app:tabMinWidth="0dp"
+            app:tabMode="scrollable"
+            app:tabPaddingBottom="22dp"
+            app:tabPaddingEnd="13dp"
+            app:tabPaddingStart="13dp"
+            app:tabSelectedTextColor="@color/textWhite"
+            app:tabTextAppearance="@style/TabLayoutTextAppearance"
+            app:layout_constraintTop_toBottomOf="@id/backButtonSurveyTab" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/pagerSurveyTab"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/backgroundWhite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tabLayoutSurveyTab" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

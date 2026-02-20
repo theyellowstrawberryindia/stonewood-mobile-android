@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="uk.co.savills.stonewood.screen.datatransfer.DataTransferViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <uk.co.savills.stonewood.util.customview.StandardToolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:isBackButtonVisible="@{!viewModel.isTransferringData}"
+            app:isLoading="@{viewModel.isBusy}"
+            app:title="Data transfer" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/backgroundWhite"
+            android:orientation="vertical"
+            tools:context=".screen.datatransfer.DataTransferFragment">
+
+            <CheckBox
+                android:id="@+id/alterationCheckBoxDataTransfer"
+                style="@style/CheckBoxStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_standard"
+                android:layout_marginTop="32dp"
+                android:checked="@={!viewModel.hasAlterations}"
+                android:text="@string/alterations_checkbox_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:letterSpacingMultiplier="0.4" />
+
+            <LinearLayout
+                android:id="@+id/alterationInputDataTransfer"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="18dp"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/margin_standard"
+                android:paddingBottom="34dp"
+                app:layout_constraintBottom_toTopOf="@+id/bottomButtonDataTransfer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/alterationCheckBoxDataTransfer"
+                app:visible="@{viewModel.hasAlterations}">
+
+                <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/bold"
+                    android:labelFor="@+id/alterationsDataTransfer"
+                    android:text="@string/alterations_label"
+                    android:textSize="@dimen/text_size_small"
+                    app:letterSpacingMultiplier="0.4" />
+
+                <EditText
+                    android:id="@+id/alterationsDataTransfer"
+                    style="@style/EditTextStyle.Multiline"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/regular"
+                    android:text="@={viewModel.alterations}" />
+
+            </LinearLayout>
+
+            <uk.co.savills.stonewood.util.customview.BottomButton
+                android:id="@+id/bottomButtonDataTransfer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.transferData()}"
+                app:isEnabled="@{viewModel.canTransferData}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:text="@string/data_transfer_button" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+</layout>

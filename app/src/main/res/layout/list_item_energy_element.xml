@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="12dp">
+
+        <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+            android:id="@+id/titleEnergyElement"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:textSize="@dimen/text_size_xsmall"
+            app:letterSpacingMultiplier="0.2"
+            android:textAlignment="textEnd"
+            android:fontFamily="@font/bold"
+            android:labelFor="@id/userEntryEditTextEnergyElement"
+            app:layout_constraintBottom_toBottomOf="@+id/comboBoxEnergyElement"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineEnergyElement"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/comboBoxEnergyElement" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineEnergyElement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.29" />
+
+        <uk.co.savills.stonewood.util.customview.ComboBox
+            android:id="@+id/comboBoxEnergyElement"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guidelineEnergyElement"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/userEntryEditTextEnergyElement"
+            style="@style/EditTextStyle.SingleLine"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guidelineEnergyElement"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextFields" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

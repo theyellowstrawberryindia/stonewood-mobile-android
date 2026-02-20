@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="@dimen/margin_standard">
+
+    <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+        android:id="@+id/monthLabelDateInputView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bold"
+        android:text="@string/month"
+        android:textSize="@dimen/text_size_small"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <uk.co.savills.stonewood.util.customview.ComboBox
+        android:id="@+id/monthsDateInputView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/margin_standard"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineDateInputView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/monthLabelDateInputView" />
+
+    <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+        android:id="@+id/yearLabelDateInputView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_standard"
+        android:fontFamily="@font/bold"
+        android:text="@string/year"
+        android:textSize="@dimen/text_size_small"
+        app:layout_constraintStart_toStartOf="@+id/guidelineDateInputView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/yearEditTextDateInputView"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:hint="@string/select_year"
+        android:focusable="false"
+        style="@style/EditTextStyle.SingleLine"
+        android:layout_marginStart="@dimen/margin_standard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guidelineDateInputView"
+        app:layout_constraintTop_toBottomOf="@+id/yearLabelDateInputView" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineDateInputView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

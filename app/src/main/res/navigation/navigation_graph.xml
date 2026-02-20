@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigationGraph"
+    app:startDestination="@id/loginFragment"
+    tools:ignore="UnusedNavigation">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="uk.co.savills.stonewood.screen.login.LoginFragment"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/moveToProjectListScreen"
+            app:destination="@id/projectListFragment"
+            app:popUpTo="@id/navigationGraph"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/moveToChangePasswordScreen"
+            app:destination="@id/changePasswordFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="uk.co.savills.stonewood.screen.changepassword.ChangePasswordFragment"
+        tools:layout="@layout/fragment_change_password">
+
+        <argument
+            android:name="isStartScreen"
+            android:defaultValue="true"
+            app:argType="boolean" />
+
+        <action
+            android:id="@+id/moveToProjectListScreen"
+            app:destination="@id/projectListFragment"
+            app:popUpTo="@id/navigationGraph"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/moveToLoginScreen"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/navigationGraph"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/projectListFragment"
+        android:name="uk.co.savills.stonewood.screen.projectlist.ProjectListFragment"
+        tools:layout="@layout/fragment_project_list">
+        <action
+            android:id="@+id/moveToProjectScreen"
+            app:destination="@id/projectFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/projectFragment"
+        android:name="uk.co.savills.stonewood.screen.project.ProjectFragment"
+        tools:layout="@layout/fragment_project">
+
+        <action
+            android:id="@+id/moveToDataTransferScreen"
+            app:destination="@id/dataTransferFragment" />
+
+        <action
+            android:id="@+id/moveToPropertyListScreen"
+            app:destination="@id/propertyListFragment" />
+
+        <action
+            android:id="@+id/moveToNewSurveyScreen"
+            app:destination="@id/newSurveyFragment" />
+        <action
+            android:id="@+id/moveToStatisticsFragment"
+            app:destination="@id/statisticsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/newSurveyFragment"
+        android:name="uk.co.savills.stonewood.screen.newsurvey.NewSurveyFragment" />
+
+    <fragment
+        android:id="@+id/statisticsFragment"
+        android:name="uk.co.savills.stonewood.screen.statistics.StatisticsFragment" />
+
+    <fragment
+        android:id="@+id/dataTransferFragment"
+        android:name="uk.co.savills.stonewood.screen.datatransfer.DataTransferFragment"
+        tools:layout="@layout/fragment_data_transfer" />
+
+    <fragment
+        android:id="@+id/propertyListFragment"
+        android:name="uk.co.savills.stonewood.screen.propertylist.PropertyListFragment"
+        tools:layout="@layout/fragment_property_list">
+
+        <action
+            android:id="@+id/moveToSurveyListScreen"
+            app:destination="@id/surveyListFragment" />
+
+        <action
+            android:id="@+id/moveToNoAccessScreen"
+            app:destination="@id/noAccessFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/surveyListFragment"
+        android:name="uk.co.savills.stonewood.screen.survey.surveylist.SurveyListFragment"
+        tools:layout="@layout/fragment_survey_list">
+
+        <action
+            android:id="@+id/moveToNoAccessScreen"
+            app:destination="@id/noAccessFragment" />
+
+        <action
+            android:id="@+id/moveToSurveyTabScreen"
+            app:destination="@id/surveyTabFragment" />
+
+        <action
+            android:id="@+id/moveToContactDetailScreen"
+            app:destination="@id/contactDetailFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/noAccessFragment"
+        android:name="uk.co.savills.stonewood.screen.survey.noaccess.NoAccessFragment"
+        tools:layout="@layout/fragment_no_access">
+
+        <argument
+            android:name="propertyId"
+            app:argType="integer" />
+
+        <argument
+            android:name="propertyUPRN"
+            app:argType="string" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/surveyTabFragment"
+        android:name="uk.co.savills.stonewood.screen.survey.survey.SurveyTabFragment"
+        tools:layout="@layout/fragment_survey_tab">
+
+        <argument
+            android:name="surveyType"
+            app:argType="uk.co.savills.stonewood.model.survey.project.SurveyType" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/contactDetailFragment"
+        android:name="uk.co.savills.stonewood.screen.survey.contact.ContactDetailFragment"
+        tools:layout="@layout/fragment_contact_detail" />
+
+    <action
+        android:id="@+id/moveToLoginFragment"
+        app:destination="@id/loginFragment"
+        app:popUpTo="@id/navigationGraph"
+        app:popUpToInclusive="true" />
+
+</navigation>

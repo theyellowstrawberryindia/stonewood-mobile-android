@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground">
+
+    <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+        android:id="@+id/titleProjectOption"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_standard"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/regular"
+        android:textSize="@dimen/text_size_large"
+        app:layout_constraintEnd_toStartOf="@+id/arrowImageProjectOption"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:letterSpacingMultiplier="0.4" />
+
+    <ImageView
+        android:id="@+id/arrowImageProjectOption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginEnd="@dimen/margin_standard"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_next"
+        app:layout_constraintBottom_toTopOf="@id/separatorProjectOption"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/separatorProjectOption"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/separator_size"
+        android:layout_marginTop="36dp"
+        android:background="@color/backgroundGray"
+        app:layout_constraintTop_toBottomOf="@id/titleProjectOption" />
+</androidx.constraintlayout.widget.ConstraintLayout>

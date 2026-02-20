@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="uk.co.savills.stonewood.screen.newsurvey.NewSurveyViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <uk.co.savills.stonewood.util.customview.StandardToolbar
+            android:id="@+id/toolbarNewSurvey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            app:title="@string/new_survey_title" />
+
+        <uk.co.savills.stonewood.util.customview.AppScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/backgroundWhite">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/margin_standard"
+                android:paddingVertical="32dp">
+
+                <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                    android:id="@+id/urpnLabelNewSurvey"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/regular"
+                    android:labelFor="@id/urpnNewSurvey"
+                    android:text="@string/uprn"
+                    android:textSize="@dimen/text_size_small"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelineNewSurvey"
+                    app:layout_constraintStart_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:letterSpacingMultiplier="0.23" />
+
+                <EditText
+                    android:id="@+id/urpnNewSurvey"
+                    style="@style/EditTextStyle.SingleLine"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="8dp"
+                    android:inputType="text"
+                    android:focusable="false"
+                    android:clickable="false"
+                    android:text="@{viewModel.uprn}"
+                    app:layout_constraintEnd_toEndOf="@+id/urpnLabelNewSurvey"
+                    app:layout_constraintStart_toStartOf="@+id/urpnLabelNewSurvey"
+                    app:layout_constraintTop_toBottomOf="@+id/urpnLabelNewSurvey"
+                    tools:ignore="TextFields" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineNewSurvey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5" />
+
+                <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                    android:id="@+id/numberLabelNewSurvey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/regular"
+                    android:labelFor="@id/numberEditTextNewSurvey"
+                    android:text="@string/number"
+                    android:textSize="@dimen/text_size_small"
+                    app:layout_constraintStart_toStartOf="@+id/guidelineNewSurvey"
+                    app:layout_constraintTop_toTopOf="@+id/urpnLabelNewSurvey"
+                    app:letterSpacingMultiplier="0.23" />
+
+                <EditText
+                    android:id="@+id/numberEditTextNewSurvey"
+                    style="@style/EditTextStyle.SingleLine"
+                    android:layout_width="0dp"
+                    android:layout_height="37dp"
+                    android:layout_marginTop="8dp"
+                    android:inputType="text"
+                    android:text="@={viewModel.number}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/numberLabelNewSurvey"
+                    app:layout_constraintTop_toBottomOf="@+id/numberLabelNewSurvey"
+                    tools:ignore="TextFields" />
+
+                <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                    android:id="@+id/addressLine1LabelNewSurvey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/regular"
+                    android:labelFor="@id/addressLine1EditTextNewSurvey"
+                    android:text="@string/address_line1_label"
+                    android:textSize="@dimen/text_size_small"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/numberEditTextNewSurvey"
+                    app:letterSpacingMultiplier="0.23" />
+
+                <EditText
+                    android:id="@+id/addressLine1EditTextNewSurvey"
+                    style="@style/EditTextStyle.SingleLine"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="8dp"
+                    android:inputType="text"
+                    android:text="@={viewModel.addressLine1}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/addressLine1LabelNewSurvey" />
+
+                <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                    android:id="@+id/addressLine2LabelNewSurvey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/regular"
+                    android:labelFor="@id/addressLine2EditTextNewSurvey"
+                    android:text="@string/address_line2_label"
+                    android:textSize="@dimen/text_size_small"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/addressLine1EditTextNewSurvey"
+                    app:letterSpacingMultiplier="0.23" />
+
+                <EditText
+                    android:id="@+id/addressLine2EditTextNewSurvey"
+                    style="@style/EditTextStyle.SingleLine"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="8dp"
+                    android:inputType="text"
+                    android:text="@={viewModel.addressLine2}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/addressLine2LabelNewSurvey" />
+
+                <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                    android:id="@+id/addressLine3LabelNewSurvey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/regular"
+                    android:labelFor="@id/addressLine3EditTextNewSurvey"
+                    android:text="@string/address_line3_label"
+                    android:textSize="@dimen/text_size_small"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/addressLine2EditTextNewSurvey"
+                    app:letterSpacingMultiplier="0.23" />
+
+                <EditText
+                    android:id="@+id/addressLine3EditTextNewSurvey"
+                    style="@style/EditTextStyle.SingleLine"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="8dp"
+                    android:inputType="text"
+                    android:text="@={viewModel.addressLine3}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/addressLine3LabelNewSurvey" />
+
+                <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                    android:id="@+id/addressLine4LabelNewSurvey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/regular"
+                    android:labelFor="@id/addressLine4EditTextNewSurvey"
+                    android:text="@string/address_line4_label"
+                    android:textSize="@dimen/text_size_small"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/addressLine3EditTextNewSurvey"
+                    app:letterSpacingMultiplier="0.23" />
+
+                <EditText
+                    android:id="@+id/addressLine4EditTextNewSurvey"
+                    style="@style/EditTextStyle.SingleLine"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="8dp"
+                    android:inputType="text"
+                    android:text="@={viewModel.addressLine4}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/addressLine4LabelNewSurvey" />
+
+                <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                    android:id="@+id/postalCodeLabelNewSurvey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/regular"
+                    android:labelFor="@id/postalCodeEditTextNewSurvey"
+                    android:text="@string/postal_code_label"
+                    android:textSize="@dimen/text_size_small"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/addressLine4EditTextNewSurvey"
+                    app:letterSpacingMultiplier="0.23" />
+
+                <EditText
+                    android:id="@+id/postalCodeEditTextNewSurvey"
+                    style="@style/EditTextStyle.SingleLine"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:inputType="text"
+                    android:text="@={viewModel.postalCode}"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelineNewSurvey"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/postalCodeLabelNewSurvey" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </uk.co.savills.stonewood.util.customview.AppScrollView>
+
+        <uk.co.savills.stonewood.util.customview.BottomButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/backgroundWhite"
+            android:onClick="@{() -> viewModel.createSurvey()}"
+            app:isEnabled="@{viewModel.canCreateSurvey}"
+            app:isLoading="@{viewModel.isBusy}"
+            app:text="@string/create" />
+    </LinearLayout>
+</layout>

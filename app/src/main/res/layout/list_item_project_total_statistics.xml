@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/separatorDark">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/containerProjectTotalStatistics"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:background="@color/backgroundWhite">
+
+        <TextView
+            android:id="@+id/strataProjectTotalStatistics"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/column1ProjectTotalStatistics"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="10025" />
+
+        <View
+            android:id="@+id/column1ProjectTotalStatistics"
+            android:layout_width="@dimen/separator_size"
+            android:layout_height="0dp"
+            android:background="@color/separatorDark"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/requiredProjectTotalStatistics"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/strataProjectTotalStatistics"
+            app:layout_constraintEnd_toStartOf="@+id/column2ProjectTotalStatistics"
+            app:layout_constraintStart_toEndOf="@+id/column1ProjectTotalStatistics"
+            app:layout_constraintTop_toTopOf="@+id/strataProjectTotalStatistics"
+            tools:text="20" />
+
+        <View
+            android:id="@+id/column2ProjectTotalStatistics"
+            android:layout_width="@dimen/separator_size"
+            android:layout_height="0dp"
+            android:background="@color/separatorDark"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/achievedProjectTotalStatistics"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/strataProjectTotalStatistics"
+            app:layout_constraintEnd_toStartOf="@+id/column3ProjectTotalStatistics"
+            app:layout_constraintStart_toEndOf="@+id/column2ProjectTotalStatistics"
+            app:layout_constraintTop_toTopOf="@+id/strataProjectTotalStatistics"
+            tools:text="5" />
+
+        <View
+            android:id="@+id/column3ProjectTotalStatistics"
+            android:layout_width="@dimen/separator_size"
+            android:layout_height="0dp"
+            android:background="@color/separatorDark"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/remainingProjectTotalStatistics"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bold"
+            app:layout_constraintBottom_toBottomOf="@+id/strataProjectTotalStatistics"
+            app:layout_constraintEnd_toStartOf="@+id/column4ProjectTotalStatistics"
+            app:layout_constraintStart_toEndOf="@+id/column3ProjectTotalStatistics"
+            app:layout_constraintTop_toTopOf="@+id/strataProjectTotalStatistics"
+            tools:text="15" />
+
+        <View
+            android:id="@+id/column4ProjectTotalStatistics"
+            android:layout_width="@dimen/separator_size"
+            android:layout_height="0dp"
+            android:background="@color/separatorDark"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/completeProjectTotalStatistics"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/strataProjectTotalStatistics"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/column4ProjectTotalStatistics"
+            app:layout_constraintTop_toTopOf="@+id/strataProjectTotalStatistics"
+            tools:text="15%" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

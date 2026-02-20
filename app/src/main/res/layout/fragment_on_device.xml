@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundWhite">
+
+    <uk.co.savills.stonewood.util.customview.EmptyView
+        android:id="@+id/emptyViewOnDevice"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:header="@string/data_empty_view_header"
+        app:image="@drawable/ic_no_project" />
+
+    <View
+        android:id="@+id/columnOnDevice"
+        android:layout_width="@dimen/separator_size"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:background="@color/separatorDark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <uk.co.savills.stonewood.util.customview.AppRecyclerView
+        android:id="@+id/sectionsOnDevice"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/columnOnDevice"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/legendOnDevice"
+        android:layout_width="0dp"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/colorPrimary"
+        android:layout_marginHorizontal="@dimen/margin_standard"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toEndOf="@+id/columnOnDevice"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <View
+            android:id="@+id/tableTopBorderOnDevice"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/separator_size"
+            android:background="@color/separatorDark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+            android:id="@+id/surveyLabelOnDevice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/textWhite"
+            android:fontFamily="@font/bold"
+            android:text="@string/survey_type"
+            app:layout_constraintStart_toStartOf="@+id/tableTopBorderOnDevice"
+            app:layout_constraintTop_toBottomOf="@+id/tableTopBorderOnDevice" />
+
+        <View
+            android:id="@+id/tableLegendBottomSeparatorOnDevice"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/separator_size"
+            android:layout_marginTop="8dp"
+            android:background="@color/separatorDark"
+            app:layout_constraintEnd_toEndOf="@id/tableTopBorderOnDevice"
+            app:layout_constraintStart_toStartOf="@+id/tableTopBorderOnDevice"
+            app:layout_constraintTop_toBottomOf="@+id/surveyLabelOnDevice" />
+
+        <View
+            android:id="@+id/tableLegendStartSeparatorOnDevice"
+            android:layout_width="@dimen/separator_size"
+            android:layout_height="0dp"
+            android:background="@color/separatorDark"
+            app:layout_constraintStart_toStartOf="@id/tableTopBorderOnDevice"
+            app:layout_constraintTop_toBottomOf="@+id/tableTopBorderOnDevice"
+            app:layout_constraintBottom_toTopOf="@id/tableLegendBottomSeparatorOnDevice"/>
+
+        <View
+            android:id="@+id/tableColumnOnDevice"
+            android:layout_width="@dimen/separator_size"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:background="@color/separatorDark"
+            app:layout_constraintBottom_toTopOf="@id/tableLegendBottomSeparatorOnDevice"
+            app:layout_constraintEnd_toEndOf="@+id/tableTopBorderOnDevice"
+            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintStart_toStartOf="@+id/tableLegendStartSeparatorOnDevice"
+            app:layout_constraintTop_toBottomOf="@+id/tableTopBorderOnDevice" />
+
+        <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+            android:id="@+id/quantityLabelOnDevice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/quantity"
+            android:fontFamily="@font/bold"
+            android:textColor="@color/textWhite"
+            app:layout_constraintBottom_toTopOf="@+id/tableLegendBottomSeparatorOnDevice"
+            app:layout_constraintEnd_toStartOf="@+id/tableLegendEndBorderOnDevice"
+            app:layout_constraintStart_toEndOf="@+id/tableColumnOnDevice"
+            app:layout_constraintTop_toBottomOf="@+id/tableTopBorderOnDevice" />
+
+        <View
+            android:id="@+id/tableLegendEndBorderOnDevice"
+            android:layout_width="@dimen/separator_size"
+            android:layout_height="0dp"
+            android:background="@color/separatorDark"
+            app:layout_constraintBottom_toTopOf="@id/tableLegendBottomSeparatorOnDevice"
+            app:layout_constraintEnd_toEndOf="@+id/tableTopBorderOnDevice"
+            app:layout_constraintTop_toBottomOf="@+id/tableTopBorderOnDevice" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <uk.co.savills.stonewood.util.customview.AppRecyclerView
+        android:id="@+id/statisticsOnDevice"
+        android:layout_width="0dp"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="@+id/legendOnDevice"
+        app:layout_constraintTop_toBottomOf="@id/legendOnDevice"
+        app:layout_constraintStart_toStartOf="@+id/legendOnDevice" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/totalLayoutOnDevice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@id/legendOnDevice"
+        app:layout_constraintStart_toStartOf="@+id/legendOnDevice"
+        app:layout_constraintTop_toBottomOf="@+id/statisticsOnDevice" >
+
+        <View
+            android:id="@+id/totalTopSeparatorOnDevice"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/separator_size"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@color/separatorDark" />
+
+        <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+            android:id="@+id/totalLabelOnDevice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/total"
+            android:fontFamily="@font/bold"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="@+id/totalTopSeparatorOnDevice"
+            app:layout_constraintTop_toBottomOf="@+id/totalTopSeparatorOnDevice" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/tableColumnGuideLineOnDevice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.8"/>
+
+        <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+            android:id="@+id/totalCountOnDevice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bold"
+            app:layout_constraintBottom_toTopOf="@+id/totalBottomSeparatorOnDevice"
+            app:layout_constraintEnd_toEndOf="@+id/totalTopSeparatorOnDevice"
+            app:layout_constraintStart_toEndOf="@+id/tableColumnGuideLineOnDevice"
+            app:layout_constraintTop_toBottomOf="@+id/totalTopSeparatorOnDevice"
+            tools:text="75" />
+
+        <View
+            android:id="@+id/totalBottomSeparatorOnDevice"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/separator_size"
+            android:layout_marginTop="8dp"
+            android:background="@color/separatorDark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/totalLabelOnDevice" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

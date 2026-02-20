@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/margin_standard"
+    android:paddingEnd="15dp"
+    android:paddingVertical="15dp"
+    tools:ignore="UseCompoundDrawables, MismatchingViewId">
+
+    <ImageView
+        android:id="@+id/statusImageEnergyGroup"
+        android:layout_width="20dp"
+        android:layout_height="20dp" />
+
+    <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+        android:id="@+id/titleEnergyGroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/regular"
+        android:hyphenationFrequency="full"
+        android:textSize="@dimen/text_size_small"
+        app:letterSpacingMultiplier="0.4"
+        tools:text="Asbestos" />
+
+</LinearLayout>

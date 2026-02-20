@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Savills</string>
+
+    <string name="select_survey_project">Select Survey Project</string>
+    <string name="logout">Logout</string>
+
+    <string name="login_header">Login to Savills</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="login">Login</string>
+
+    <string name="change_password_title">Change Password</string>
+    <string name="new_password_hint">New Password</string>
+    <string name="invalid_password_error_message">Password must be at least 8 characters long including:\nAn uppercase letter\nA lowercase letter\nA number\nA special character</string>
+    <string name="retype_password_hint">Retype Password</string>
+    <string name="password_mismatch_error_message">Passwords do not match</string>
+
+    <string name="help">Help</string>
+    <string name="help_message">For help call Jas &#160;%1$s</string>
+    <string name="conduct_survey">Do a survey</string>
+    <string name="data_transfer">Data transfer</string>
+    <string name="create_new_block_survey">Create new block survey</string>
+    <string name="version">Version %1$s</string>
+
+    <string name="new_survey_title">New survey</string>
+    <string name="uprn">UPRN</string>
+    <string name="number">Number</string>
+    <string name="address_line1_label">Address line 1</string>
+    <string name="address_line2_label">Address line 2</string>
+    <string name="address_line3_label">Address line 3</string>
+    <string name="address_line4_label">Address line 4</string>
+    <string name="postal_code_label">Postal code</string>
+    <string name="create">Create</string>
+    <string name="survey_added_dialog_message">Survey successfully added</string>
+
+    <string name="property_list_title">Select Address</string>
+    <string name="property_count">TOTAL properties: %d</string>
+    <string name="filtered_property_count">FILTERED properties: %d</string>
+    <string name="address_search_hint">Search address</string>
+    <string name="property_status_label">Surveyed Status:</string>
+    <string name="property_surveyed_legend">Surveyed</string>
+    <string name="property_contact_available_label">@string/contact_details</string>
+    <string name="property_void_label">Void</string>
+    <string name="property_no_access_label">1 no access</string>
+    <string name="property_repeated_no_access_label">2 no access</string>
+    <string name="property_refusal_label">Refusal</string>
+    <string name="no_access_entry_count">%1$d more</string>
+    <string name="contact_number_label">Contact number</string>
+    <string name="location_label">Location</string>
+
+    <string name="alterations_label">Alterations</string>
+    <string name="alterations_checkbox_label">No alterations</string>
+    <string name="data_transfer_button">Transfer</string>
+    <string name="data_transfer_error_dialog_message">Please contact Jas.\n\nDetails: %1$s</string>
+    <string name="data_transfer_internet_issue_message">Data sync failed due to internet connection issues.\nTry again or contact Jas if the issue persists.</string>
+
+    <string name="statistics">Statistics</string>
+    <string name="on_device">On Device</string>
+    <string name="project_total">Project Total</string>
+    <string name="survey_type">Survey Type</string>
+    <string name="quantity">Quantity</string>
+    <string name="total">Total</string>
+    <string name="section_label">Sctn %s</string>
+    <string name="internal">Internal</string>
+    <string name="external">External</string>
+    <string name="internal_or_external">Internal / External</string>
+    <string name="external_or_communal">External / Communal (Block)</string>
+    <string name="internal_sap">Internal + SAP</string>
+    <string name="internal_or_external_sap">Internal / External + SAP</string>
+    <string name="sap">SAP</string>
+    <string name="strata">Strata</string>
+    <string name="required">Required</string>
+    <string name="achieved">Achieved</string>
+    <string name="remaining">Remaining</string>
+    <string name="complete_label">% Complete</string>
+    <string name="percent">%% %s</string>
+
+    <string name="no_access">No Access</string>
+    <string name="risk_assessment_survey_default_name">COVID</string>
+    <string name="quality_standard_survey_default_name">Disabled</string>
+    <string name="stock_survey_default_name">Stock</string>
+    <string name="hhsrs_survey_default_name">HHSRS</string>
+    <string name="energy_survey_default_name">Energy</string>
+
+    <string name="contact_details">Contact details</string>
+    <string name="primary_contact_number">Primary contact number</string>
+    <string name="secondary_contact_number">Secondary contact number</string>
+    <string name="notes">Notes</string>
+    <string name="front_door_photo_button_text">Take front door photo</string>
+
+    <string name="reason_for_no_access">Reason for no access?</string>
+    <string name="add_remarks">Add remarks</string>
+    <string name="submit">Submit</string>
+    <string name="type_remarks_here">Type remarks here</string>
+    <string name="select_reason">Select reason</string>
+
+    <plurals name="photo_view_label">
+        <item quantity="one">%1$d Photo Required</item>
+        <item quantity="other">%1$d Photos Required</item>
+    </plurals>
+    <string name="internal_location_label">Location internal</string>
+    <string name="multiple_options_hint">*You can select multiple options</string>
+    <string name="other_location_label">Other location details</string>
+    <string name="external_location_label">Location external</string>
+    <string name="others_option">Others</string>
+
+    <string name="age">Age</string>
+    <string name="as_built">As Built</string>
+    <string name="renewal">Renewal</string>
+    <string name="renewal_quantity">Renewal Quantity</string>
+    <string name="additional_quantity">Additional Quantity</string>
+    <string name="multiplicable_additional_quantity_label">Roof Footprint (m&#xB2;)</string>
+    <string name="quantity_multiplier_hint">30%</string>
+    <string name="renewal_quantity_unit">(%1$s)</string>
+    <string name="quantity_hint">Enter Quantity</string>
+    <string name="repairs">Repairs</string>
+    <plurals name="life">
+        <item quantity="one">%d year</item>
+        <item quantity="other">%d years</item>
+    </plurals>
+    <string name="repair_cost_label">Repair Cost</string>
+    <string name="repair_description_label">Repair Description</string>
+    <string name="description_hint">Enter description</string>
+    <string name="combo_box_placeholder">Please select</string>
+    <string name="minimum_character_error">Text should have minimum 4 characters</string>
+    <string name="positive_number_error">Only values greater than 0 are allowed</string>
+    <string name="number_error">Not a valid number</string>
+    <string name="property_address_element_title">Property Address (including UPRN)</string>
+    <string name="general_group_title">General</string>
+    <string name="input_sub_element_postfix">&lt;text&gt;</string>
+    <string name="idoc_element_title">iDoC</string>
+    <string name="idoc_entry_sub_element_title">50+ years old [Input DoC]&lt;text&gt;</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="extreme_renewal_band_warning_message">The renewal band selected is highly unlikely based on the lifecycle.\nPlease provide the reason for the selection</string>
+    <string name="limit_error">Value exceeds permitted limit</string>
+    <string name="external_photos_confirmation_message">You have chosen to duplicate the external photo(s) from the following address:</string>
+    <string name="use_existing">Use existing</string>
+    <string name="take_new_photo">Take new photo</string>
+    <string name="external_photo_added">External photo was successfully added</string>
+
+    <string name="validation_label">Validate</string>
+    <string name="se_validation_label_short">S vs E</string>
+    <string name="se_validation_label">Stock vs Energy X-Checks</string>
+    <string name="e_log_validation_label_short">E Log</string>
+    <string name="e_log_validation_label">Energy Logic Checks</string>
+    <string name="s_log_validation_label_short">S Log</string>
+    <string name="s_log_validation_label">Stock Logic Checks</string>
+    <string name="no_validations">No validation required</string>
+
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <string name="select_year">Select Year</string>
+    <string name="select_month">Select Month</string>
+    <string name="year">Year</string>
+    <string name="month">Month</string>
+
+    <string name="standard_dialog_header">Information</string>
+    <string name="dialog_standard_button_text">Okay</string>
+    <string name="dialog_skip_button_text">Skip</string>
+
+    <string name="location_permission_rationale_dialog_title">Location permission required</string>
+    <string name="location_permission_rationale_dialog_message">Location information is required to conduct surveys</string>
+    <string name="settings_dialog_button">Go to settings</string>
+
+    <string name="location_provider_rationale_dialog_title">Device location required</string>
+    <string name="location_provider_rationale_dialog_message">Device location has been turned off.\nPlease turn on device location to continue</string>
+
+    <string name="no_connection_dialog_header">No connection</string>
+    <string name="no_connection_dialog_message">Please check your connection, you don\'t seem to be connected to the internet</string>
+
+    <string name="unexpected_api_error_dialog_header">Something went wrong!</string>
+    <string name="unexpected_api_error_dialog_message">Please try again.\n\nDetails: %1$s</string>
+
+    <string name="warning_dialog_header">Warning!</string>
+    <string name="logout_warning_dialog_message">Are you sure you want to logout?</string>
+
+    <string name="external_survey_question_dialog_title">Inquiry</string>
+    <string name="external_survey_question_dialog_question">Do you want to perform an external only survey?</string>
+
+    <string name="front_door_photo_added_dialog_message">Front door photo added successfully.</string>
+    <string name="front_door_photo_required_dialog_positive_button">@string/take_photo</string>
+    <string name="confirm_risk_assessment_failure">Confirm -\nTake photo</string>
+
+    <string name="data_transfer_complete_dialog_message">Data sync is completed!</string>
+
+    <string name="photo_capture_failure_dialog_message">Failed to take photo</string>
+
+    <string name="invalid_photo_dialog_header">Invalid photo!</string>
+    <string name="invalid_photo_dialog_message">Only portrait photos with an\n aspect ratio of roughly 3:4 are allowed.\nPlease retake the photo.</string>
+
+    <string name="excessive_value_warning_dialog_message">Quantity value \‘%1$s\’ for %2$s is unusually high\n\nPlease check that this is correct before proceeding</string>
+    <string name="excessively_low_value_warning_dialog_message">Quantity value \‘%1$s\’ for %2$s is unusually low\n\nPlease check that this is correct before proceeding</string>
+
+    <string name="rare_sub_element_warning_dialog_message">Are you sure you want to select %s?</string>
+
+    <string name="typical_rating_warning_dialog_message">Are you sure you want to change rating to Typical?</string>
+
+    <string name="app_update_available_dialog_message">A newer version of this app is available. Update the app to receive the latest features and fixes</string>
+    <string name="app_update_available_dialog_button_text">Go to store</string>
+
+    <string name="no_survey_project_empty_view_header">No survey project found</string>
+    <string name="no_property_empty_view_header">No address found</string>
+    <string name="data_empty_view_header">No data found</string>
+
+    <string name="copy">Copy</string>
+    <string name="retry">Retry</string>
+    <string name="done">Done</string>
+
+    <string name="confirm">Confirm</string>
+    <string name="search_hint">Search</string>
+    <string name="change_selection">Change Selection</string>
+
+    <string name="existing_data_title">Existing %s Data</string>
+    <string name="communal_data_confirmation_message">You have chosen to duplicate the %s data from the following address:</string>
+    <string name="communal_data_confirmation">Please confirm that this is correct</string>
+    <string name="communal_element_label">Individual OR Communal</string>
+    <string name="data_label">Data</string>
+    <string name="type_label">Type</string>
+    <string name="address">Address</string>
+    <string name="post_code">Post Code</string>
+    <string name="surveyor">Surveyor</string>
+    <string name="photos">Photos</string>
+    <string name="external_photos_title">Existing external photos</string>
+    <string name="photo_required_dialog_header">Photo required</string>
+    <string name="risk_assessment">Risk Assessment</string>
+    <string name="pass">Pass</string>
+    <string name="fail">Fail</string>
+    <string name="photo_required_dialog_message">Please photograph the front door before proceeding</string>
+    <string name="create_new">Create new</string>
+    <string name="use_previously_accessed">Use previously accessed</string>
+
+    <string name="ext_photo_dialog_header">PHOTO REQUIRED!</string>
+    <string name="ext_photo_dialog_message">Please provide an external front elevation photo of this building</string>
+</resources>

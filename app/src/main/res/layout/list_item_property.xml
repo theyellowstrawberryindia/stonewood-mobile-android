@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="property"
+            type="uk.co.savills.stonewood.model.survey.property.PropertyModel" />
+
+        <variable
+            name="clickListener"
+            type="uk.co.savills.stonewood.screen.propertylist.PropertyClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/backgroundWhite"
+        android:onClick="@{() -> clickListener.onClick(property)}">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/itemSeparatorProperty"
+            app:layout_constraintEnd_toStartOf="@+id/columnSeparator1Property"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:status="@{property.status}" />
+
+        <View
+            android:id="@+id/columnSeparator1Property"
+            android:layout_width="@dimen/separator_size"
+            android:layout_height="0dp"
+            android:background="@color/separator"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.21"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+            android:id="@+id/uprnTextProperty"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_standard"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/bold"
+            android:maxLines="1"
+            android:text="@{property.UPRN}"
+            android:textSize="@dimen/text_size_medium"
+            app:layout_constraintBottom_toBottomOf="@+id/addressTextProperty"
+            app:layout_constraintEnd_toStartOf="@+id/columnSeparator1Property"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/addressTextProperty"
+            app:letterSpacingMultiplier="0.2" />
+
+        <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+            android:id="@+id/addressTextProperty"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_standard"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/bold"
+            android:text="@{property.address.toString}"
+            android:textSize="@dimen/text_size_medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/columnSeparator1Property"
+            app:layout_constraintTop_toTopOf="parent"
+            app:letterSpacingMultiplier="0.2" />
+
+        <View
+            android:id="@+id/rowSeparatorProperty"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/separator_size"
+            android:layout_marginTop="16dp"
+            android:background="@color/separator"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addressTextProperty" />
+
+        <View
+            android:id="@+id/columnSeparator2Property"
+            android:layout_width="@dimen/separator_size"
+            android:layout_height="0dp"
+            android:background="@color/separator"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.69"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rowSeparatorProperty" />
+
+        <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+            android:id="@+id/surveyTypeTextProperty"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/regular"
+            android:maxLines="1"
+            android:text="@{property.surveyType.name}"
+            android:textSize="@dimen/text_size_xsmall"
+            app:layout_constraintEnd_toEndOf="@+id/uprnTextProperty"
+            app:layout_constraintStart_toStartOf="@+id/uprnTextProperty"
+            app:layout_constraintTop_toBottomOf="@+id/rowSeparatorProperty"
+            app:letterSpacingMultiplier="0.2" />
+
+        <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+            android:id="@+id/strataTextProperty"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp"
+            android:fontFamily="@font/regular"
+            android:maxLines="1"
+            android:text="@{property.strata}"
+            android:textSize="@dimen/text_size_xsmall"
+            app:layout_constraintEnd_toEndOf="@+id/surveyTypeTextProperty"
+            app:layout_constraintStart_toStartOf="@+id/surveyTypeTextProperty"
+            app:layout_constraintTop_toBottomOf="@+id/surveyTypeTextProperty"
+            app:letterSpacingMultiplier="0.2" />
+
+        <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+            android:id="@+id/taTextProperty"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp"
+            android:fontFamily="@font/regular"
+            android:maxLines="1"
+            android:text="@{property.TA}"
+            android:textSize="@dimen/text_size_xsmall"
+            app:layout_constraintEnd_toEndOf="@+id/strataTextProperty"
+            app:layout_constraintStart_toStartOf="@+id/strataTextProperty"
+            app:layout_constraintTop_toBottomOf="@+id/strataTextProperty"
+            app:letterSpacingMultiplier="0.2" />
+
+        <LinearLayout
+            android:id="@+id/noAccessEntryHistoryViewProperty"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="9dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toStartOf="@+id/noAccessImageProperty"
+            app:layout_constraintStart_toEndOf="@+id/columnSeparator1Property"
+            app:layout_constraintTop_toBottomOf="@+id/rowSeparatorProperty" />
+
+        <ImageView
+            android:id="@+id/noAccessImageProperty"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_no_access_red"
+            android:background="?selectableItemBackgroundBorderless"
+            android:onClick="@{() -> clickListener.onNoAccessClick(property)}"
+            app:layout_constraintEnd_toStartOf="@+id/columnSeparator2Property"
+            app:layout_constraintTop_toBottomOf="@+id/rowSeparatorProperty" />
+
+        <ImageView
+            android:id="@+id/takePhotoProperty"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:background="?selectableItemBackgroundBorderless"
+            android:onClick="@{() -> clickListener.onTakePhoto(property)}"
+            android:padding="10dp"
+            android:src="@drawable/ic_external_photo"
+            app:layout_constraintBottom_toTopOf="@id/itemSeparatorProperty"
+            app:layout_constraintEnd_toStartOf="@+id/columnSeparator2Property" />
+
+        <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+            android:id="@+id/noAccessEntryMoreTextProperty"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:fontFamily="@font/regular"
+            android:maxLines="1"
+            android:text="@{@string/no_access_entry_count(property.noAccessHistory.size - 3)}"
+            android:textSize="@dimen/text_size_xxxsmall"
+            app:layout_constraintEnd_toEndOf="@+id/noAccessEntryHistoryViewProperty"
+            app:layout_constraintStart_toStartOf="@+id/noAccessEntryHistoryViewProperty"
+            app:layout_constraintTop_toBottomOf="@+id/noAccessEntryHistoryViewProperty"
+            app:letterSpacingMultiplier="0.2"
+            app:visible="@{property.noAccessHistory.size > 3}" />
+
+        <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+            android:id="@+id/contactNumberLabelProperty"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/regular"
+            android:maxLines="1"
+            android:text="@string/contact_number_label"
+            android:textColor="@color/textLight"
+            android:textSize="@dimen/text_size_xxxsmall"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/columnSeparator2Property"
+            app:layout_constraintTop_toTopOf="@+id/surveyTypeTextProperty"
+            app:letterSpacingMultiplier="0.2" />
+
+        <TextView
+            android:id="@+id/contactNumberTextProperty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/regular"
+            android:maxLines="1"
+            android:onClick="@{() -> clickListener.onContactNumberClick(property.contact.number)}"
+            android:text="@{property.contact.number}"
+            android:textSize="@dimen/text_size_xxsmall"
+            app:layout_constraintEnd_toEndOf="@+id/contactNumberLabelProperty"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/contactNumberLabelProperty"
+            app:layout_constraintTop_toBottomOf="@+id/contactNumberLabelProperty" />
+
+        <TextView
+            android:id="@+id/locationLabelProperty"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:fontFamily="@font/regular"
+            android:maxLines="1"
+            android:text="@string/location_label"
+            android:textColor="@color/textLight"
+            android:textSize="@dimen/text_size_xxxsmall"
+            app:layout_constraintEnd_toEndOf="@+id/contactNumberLabelProperty"
+            app:layout_constraintStart_toStartOf="@+id/contactNumberTextProperty"
+            app:layout_constraintTop_toBottomOf="@+id/contactNumberTextProperty" />
+
+        <ImageView
+            android:id="@+id/locationImageProperty"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="7dp"
+            android:background="@color/colorPrimary"
+            android:onClick="@{() -> clickListener.onLocationClick(property.address.toString())}"
+            android:src="@drawable/ic_location"
+            app:layout_constraintStart_toStartOf="@+id/locationLabelProperty"
+            app:layout_constraintTop_toBottomOf="@+id/locationLabelProperty" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/contentBarrierProperty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="noAccessEntryMoreTextProperty,locationImageProperty" />
+
+        <View
+            android:id="@+id/itemSeparatorProperty"
+            android:layout_width="match_parent"
+            android:layout_height="9dp"
+            android:layout_marginTop="22dp"
+            android:background="@color/separator"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/contentBarrierProperty" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

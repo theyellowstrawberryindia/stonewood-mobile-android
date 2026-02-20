@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="surveyListViewModel"
+            type="uk.co.savills.stonewood.screen.survey.surveylist.SurveyListViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".screen.projectlist.SurveyListFragment">
+
+        <uk.co.savills.stonewood.util.customview.StandardToolbar
+            android:id="@+id/toolbarAddressSurveyList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:isBackButtonVisible="@{surveyListViewModel.canMoveBack}"
+            app:title="@{surveyListViewModel.projectTitle}" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/backgroundGray"
+            android:padding="@dimen/margin_standard">
+
+            <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                android:id="@+id/headerTextViewSurveyList"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/bold"
+                android:text="@{surveyListViewModel.property.UPRN}"
+                android:textSize="@dimen/text_size_medium"
+                app:layout_constraintEnd_toStartOf="@+id/photoLayoutSurveyList"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:letterSpacingMultiplier="0.36" />
+
+            <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                android:id="@+id/detailsTextViewSurveyList"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="9dp"
+                android:fontFamily="@font/regular"
+                android:text="@{surveyListViewModel.property.address.toString()}"
+                android:textSize="@dimen/text_size_medium"
+                app:layout_constraintEnd_toEndOf="@+id/headerTextViewSurveyList"
+                app:layout_constraintStart_toStartOf="@+id/headerTextViewSurveyList"
+                app:layout_constraintTop_toBottomOf="@+id/headerTextViewSurveyList"
+                app:letterSpacingMultiplier="0.4" />
+
+            <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                android:id="@+id/contactDetailsLabelSurveyList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:fontFamily="@font/regular"
+                android:onClick="@{() -> surveyListViewModel.onContactDetail()}"
+                android:text="@string/contact_details"
+                android:textColor="@color/textPrimary"
+                android:textSize="@dimen/text_size_small"
+                app:layout_constraintStart_toStartOf="@id/detailsTextViewSurveyList"
+                app:layout_constraintTop_toBottomOf="@+id/detailsTextViewSurveyList"
+                app:letterSpacingMultiplier="0.2"
+                app:textAllCaps="true" />
+
+            <FrameLayout
+                android:id="@+id/photoLayoutSurveyList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:visible="@{surveyListViewModel.frontDoorPhotoRequired}">
+
+                <Button
+                    android:id="@+id/frontDoorPhotoButtonSurveyList"
+                    style="@style/ButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:fontFamily="@font/regular"
+                    android:minHeight="0dp"
+                    android:onClick="@{() -> surveyListViewModel.takeFrontDoorPhoto()}"
+                    android:text="@string/front_door_photo_button_text"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="@dimen/text_size_small"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:visible="@{surveyListViewModel.canTakeFrontDoorPhoto}" />
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:visible="@{!surveyListViewModel.canTakeFrontDoorPhoto}">
+
+                    <ImageView
+                        android:id="@+id/frontDoorPhotoSurveyList"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop" />
+
+                    <ImageView
+                        android:id="@+id/removePhotoSurveyList"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="top|end"
+                        android:adjustViewBounds="true"
+                        android:onClick="@{() -> surveyListViewModel.onRemoveFrontDoorPhoto()}"
+                        android:src="@drawable/ic_remove" />
+                </FrameLayout>
+            </FrameLayout>
+
+            <ImageView
+                android:id="@+id/extPhotoButtonSurveyList"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:layout_marginTop="10dp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:padding="10dp"
+                android:src="@drawable/ic_external_photo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/photoLayoutSurveyList"
+                app:visible="@{surveyListViewModel.property.hasExternalPhoto}" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <uk.co.savills.stonewood.util.customview.AppRecyclerView
+            android:id="@+id/recyclerViewSurveyList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/backgroundWhite"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+    </LinearLayout>
+</layout>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/backgroundWhite">
+
+    <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+        android:id="@+id/leftOperandTitleValidation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="@dimen/margin_standard"
+        android:fontFamily="@font/bold"
+        app:layout_constraintEnd_toEndOf="@id/leftOperandLayoutValidation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Stock" />
+
+    <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+        android:id="@+id/rightOperandTitleValidation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/bold"
+        app:layout_constraintEnd_toEndOf="@+id/rightOperandLayoutValidation"
+        app:layout_constraintStart_toStartOf="@+id/rightOperandLayoutValidation"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Energy asddsa asdasd asdasdsa asdasd asdsad" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/titleBarrierValidation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="leftOperandTitleValidation, rightOperandTitleValidation" />
+
+    <FrameLayout
+        android:id="@+id/leftOperandLayoutValidation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="10dp"
+        android:background="@drawable/background_edit_text"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineValidation"
+        app:layout_constraintStart_toStartOf="@+id/leftOperandTitleValidation"
+        app:layout_constraintTop_toBottomOf="@+id/titleBarrierValidation">
+
+        <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+            android:id="@+id/leftOperandValidation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginHorizontal="10dp"
+            tools:text="Gas Boiler" />
+
+    </FrameLayout>
+
+    <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+        android:id="@+id/errorValidation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:textColor="@color/incomplete"
+        app:layout_constraintEnd_toEndOf="@+id/rightOperandLayoutValidation"
+        app:layout_constraintStart_toStartOf="@+id/leftOperandLayoutValidation"
+        app:layout_constraintTop_toBottomOf="@+id/leftOperandLayoutValidation"
+        tools:text="sdgasdsadfasfd" />
+
+    <FrameLayout
+        android:id="@+id/rightOperandLayoutValidation"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/margin_standard"
+        android:background="@drawable/background_edit_text"
+        app:layout_constraintBottom_toBottomOf="@+id/leftOperandLayoutValidation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guidelineValidation"
+        app:layout_constraintTop_toBottomOf="@+id/titleBarrierValidation">
+
+        <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+            android:id="@+id/rightOperandValidation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginHorizontal="10dp"
+            tools:text="Gas Boiler" />
+
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/statusImageValidation"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/rightOperandLayoutValidation"
+        app:layout_constraintEnd_toStartOf="@+id/rightOperandLayoutValidation"
+        app:layout_constraintStart_toEndOf="@+id/leftOperandLayoutValidation"
+        app:layout_constraintTop_toTopOf="@+id/rightOperandLayoutValidation" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineValidation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="noAccessViewModel"
+            type="uk.co.savills.stonewood.screen.survey.noaccess.NoAccessViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundWhite"
+        android:orientation="vertical"
+        tools:context=".screen.survey.noaccess.NoAccessFragment">
+
+        <uk.co.savills.stonewood.util.customview.StandardToolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            app:isLoading="@{noAccessViewModel.isBusy}"
+            app:title="@string/no_access" />
+
+        <uk.co.savills.stonewood.util.customview.AppScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/margin_standard"
+                android:paddingVertical="32dp">
+
+                <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/bold"
+                    android:text="@string/reason_for_no_access"
+                    android:textSize="@dimen/text_size_small"
+                    app:letterSpacingMultiplier="0.4" />
+
+                <uk.co.savills.stonewood.util.customview.ComboBox
+                    android:id="@+id/reasonComboBoxNoAccess"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp" />
+
+                <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="27dp"
+                    android:fontFamily="@font/bold"
+                    android:textSize="@dimen/text_size_small"
+                    app:letterSpacingMultiplier="0.4"
+                    app:photoLabel="@{noAccessViewModel.remainingPhotoCount}" />
+
+                <uk.co.savills.stonewood.util.customview.AppRecyclerView
+                    android:id="@+id/photoRecyclerViewNoAccess"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:columnWidth="@dimen/column_width"
+                    android:overScrollMode="never" />
+
+                <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="27dp"
+                    android:fontFamily="@font/bold"
+                    android:text="@string/add_remarks"
+                    android:textSize="@dimen/text_size_small"
+                    app:letterSpacingMultiplier="0.4" />
+
+                <EditText
+                    style="@style/EditTextStyle.Multiline"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:gravity="top"
+                    android:hint="@string/type_remarks_here"
+                    android:minHeight="300dp"
+                    android:text="@={noAccessViewModel.remarks}" />
+            </LinearLayout>
+        </uk.co.savills.stonewood.util.customview.AppScrollView>
+
+        <uk.co.savills.stonewood.util.customview.BottomButton
+            android:id="@+id/submitButtonNoAccess"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> noAccessViewModel.submit()}"
+            app:isEnabled="@{noAccessViewModel.canSubmit}"
+            app:text="@string/submit" />
+    </LinearLayout>
+</layout>

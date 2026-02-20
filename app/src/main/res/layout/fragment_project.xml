@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="uk.co.savills.stonewood.screen.project.ProjectViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundWhite"
+        tools:context=".screen.project.ProjectFragment">
+
+        <uk.co.savills.stonewood.util.customview.StandardToolbar
+            android:id="@+id/toolbarProject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            app:title="@{viewModel.projectName}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbarProject">
+
+            <uk.co.savills.stonewood.screen.project.ProjectOptionView
+                android:id="@+id/conductSurveyViewProject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.conductSurvey()}"
+                app:title="@string/conduct_survey"
+                app:separatorHeight="10dp" />
+
+            <uk.co.savills.stonewood.screen.project.ProjectOptionView
+                android:id="@+id/transferDataTextProject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.transferData()}"
+                app:title="@string/data_transfer"
+                app:separatorHeight="10dp" />
+
+            <uk.co.savills.stonewood.screen.project.ProjectOptionView
+                android:id="@+id/createNewSurveyProject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.createNewSurvey()}"
+                app:title="@string/create_new_block_survey"
+                app:separatorHeight="10dp" />
+
+            <uk.co.savills.stonewood.screen.project.ProjectOptionView
+                android:id="@+id/statisticsViewProject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.viewSurveyStatistics()}"
+                app:title="@string/statistics"
+                app:separatorHeight="10dp" />
+
+            <uk.co.savills.stonewood.screen.project.ProjectOptionView
+                android:id="@+id/helpViewProject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="@string/help" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

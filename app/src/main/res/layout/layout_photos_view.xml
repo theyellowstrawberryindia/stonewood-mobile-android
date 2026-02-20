@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/backgroundWhite">
+
+    <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+        android:id="@+id/labelPhotosView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_standard"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/bold"
+        android:textSize="@dimen/text_size_small"
+        tools:text="Photos"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:letterSpacingMultiplier="0.23" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/noAccessButtonPhotosView"
+        android:layout_width="35dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:background="@color/transparent"
+        android:layout_marginEnd="@dimen/margin_standard"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_no_photo"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/labelPhotosView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/labelPhotosView" />
+
+    <GridLayout
+        android:id="@+id/gridPhotosView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_standard"
+        android:columnCount="3"
+        android:orientation="horizontal"
+        android:useDefaultMargins="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelPhotosView" />
+
+    <uk.co.savills.stonewood.util.customview.ComboBox
+        android:id="@+id/noAccessReasonsPhotosView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:visibility="gone"
+        android:layout_marginHorizontal="@dimen/margin_standard"
+        app:layout_constraintTop_toBottomOf="@id/labelPhotosView"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

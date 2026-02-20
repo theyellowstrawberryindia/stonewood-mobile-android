@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Button xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="4dp"
+    android:fontFamily="@font/regular"
+    android:textColor="@color/textPrimary"
+    android:letterSpacing="0.03"
+    android:minWidth="0dp"
+    android:minHeight="0dp"
+    android:padding="12dp"
+    android:textAllCaps="false"
+    android:textSize="@dimen/text_size_small"
+    tools:ignore="MismatchingViewId" />

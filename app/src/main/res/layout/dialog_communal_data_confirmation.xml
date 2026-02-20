@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="48dp"
+        android:background="@color/backgroundWhite"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+            android:id="@+id/titleCommunalDataConfirmation"
+            android:textSize="@dimen/text_size_large"
+            android:fontFamily="@font/bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_dialog"
+            android:layout_marginTop="34dp"
+            android:textAlignment="center"
+            tools:text="Existing Communal Boiler Data"
+            app:letterSpacingMultiplier="0.2"/>
+
+        <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+            android:id="@+id/descriptionCommunalDataConfirmation"
+            android:textSize="@dimen/text_size_medium"
+            android:fontFamily="@font/light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="You have chosen to duplicate the Central Heating Boiler data from the following address:"
+            android:layout_marginHorizontal="@dimen/margin_dialog"
+            android:layout_marginTop="20dp"
+            app:letterSpacingMultiplier="0.2" />
+
+        <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+            android:id="@+id/addressCommunalDataConfirmation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="@dimen/text_size_medium"
+            android:fontFamily="@font/bold"
+            android:layout_marginHorizontal="@dimen/margin_dialog"
+            tools:text="31 Bromycroft Road\nSlough\nSL2 2BG"
+            app:letterSpacingMultiplier="0.3"/>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingHorizontal="43dp">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/photosCommunalDataConfirmation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
+
+        </HorizontalScrollView>
+
+        <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_dialog"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/light"
+            android:text="@string/communal_data_confirmation"
+            app:letterSpacingMultiplier="0.2"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/separator_size"
+            android:layout_marginTop="20dp"
+            android:background="@color/separator" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/confirmButtonCommunalDataConfirmation"
+                style="@style/DialogButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/confirm" />
+
+            <View
+                android:layout_width="@dimen/separator_size"
+                android:layout_height="match_parent"
+                android:background="@color/separator" />
+
+            <Button
+                android:id="@+id/dismissButtonCommunalDataConfirmation"
+                style="@style/DialogButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/change_selection" />
+
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

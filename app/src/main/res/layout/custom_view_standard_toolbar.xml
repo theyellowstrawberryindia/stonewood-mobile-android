@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/logoStandardToolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_standard"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_logo_small"
+            app:layout_constraintBottom_toBottomOf="@+id/optionViewStandardToolbar"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageButton
+            android:id="@+id/backButtonStandardToolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:layout_marginBottom="16dp"
+            android:adjustViewBounds="true"
+            android:background="@color/transparent"
+            android:foreground="?attr/selectableItemBackground"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="10dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_back" />
+
+        <LinearLayout
+            android:id="@+id/optionViewStandardToolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_standard"
+            android:background="@color/backgroundToolbarOption"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/backButtonStandardToolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/backButtonStandardToolbar"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:id="@+id/optionImageStandardToolbar"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@color/colorAccent" />
+
+            <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                android:id="@+id/optionTextStandardToolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/regular"
+                android:textColor="@color/textWhite"
+                android:textSize="@dimen/text_size_medium"
+                app:letterSpacingMultiplier="0.4" />
+
+        </LinearLayout>
+
+        <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+            android:id="@+id/titleStandardToolbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_standard"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/black"
+            android:textColor="@color/textWhite"
+            android:textSize="@dimen/text_size_xx_large"
+            app:layout_constraintEnd_toStartOf="@+id/infoTextStandardToolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/backButtonStandardToolbar"
+            app:letterSpacingMultiplier="0.43" />
+
+        <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+            android:id="@+id/infoTextStandardToolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textWhite"
+            android:fontFamily="@font/bold"
+            android:layout_marginEnd="@dimen/margin_standard"
+            android:textSize="@dimen/text_size_large"
+            app:layout_constraintBottom_toBottomOf="@+id/titleStandardToolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/titleStandardToolbar" />
+
+        <ImageView
+            android:id="@+id/progressBarStandardToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/progress_animated"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleStandardToolbar" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

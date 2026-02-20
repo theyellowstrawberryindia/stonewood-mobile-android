@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="uk.co.savills.stonewood.screen.survey.survey.hhsrs.HHSRSSurveyViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundWhite"
+        tools:ignore="MismatchingViewId">
+
+        <uk.co.savills.stonewood.util.customview.AppRecyclerView
+            android:id="@+id/elementRecyclerViewHHSRSSurvey"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/paneSeparatorHHSRSSurvey"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/paneSeparatorHHSRSSurvey"
+            android:layout_width="@dimen/separator_size"
+            android:layout_height="match_parent"
+            android:background="@color/separator"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.2333"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <uk.co.savills.stonewood.util.customview.AppScrollView
+            android:id="@+id/scrollViewHHSRSSurvey"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/paneSeparatorHHSRSSurvey"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingVertical="28dp">
+
+                <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                    android:id="@+id/titleHHSRSSurvey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_standard"
+                    android:fontFamily="@font/black"
+                    android:text="@{viewModel.selectedElement.title}"
+                    android:textSize="@dimen/text_size_xx_large"
+                    app:letterSpacingMultiplier="0.4" />
+
+                <uk.co.savills.stonewood.util.customview.AppRecyclerView
+                    android:id="@+id/ratingRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="33dp"
+                    android:overScrollMode="never" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:visible="@{viewModel.isExtraInfoRequired}">
+
+                    <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                        android:id="@+id/remarksLabelHHSRSSurvey"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/margin_standard"
+                        android:layout_marginTop="28dp"
+                        android:fontFamily="@font/bold"
+                        android:labelFor="@id/remarksEditTextHHSRSSurvey"
+                        android:text="@string/add_remarks"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:letterSpacingMultiplier="0.47" />
+
+                    <EditText
+                        android:id="@+id/remarksEditTextHHSRSSurvey"
+                        style="@style/EditTextStyle.Multiline"
+                        android:layout_width="match_parent"
+                        android:layout_height="84dp"
+                        android:layout_marginHorizontal="@dimen/margin_standard"
+                        android:layout_marginTop="15dp"
+                        android:text="@={viewModel.ratingDescription}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/remarksLabelHHSRSSurvey" />
+
+                    <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                        android:id="@+id/photosLabelHHSRSSurvey"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/margin_standard"
+                        android:layout_marginTop="31dp"
+                        android:fontFamily="@font/bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/remarksEditTextHHSRSSurvey"
+                        app:letterSpacingMultiplier="0.47"
+                        app:photoLabel="@{viewModel.remainingPhotoCount}" />
+
+                    <uk.co.savills.stonewood.util.customview.AppRecyclerView
+                        android:id="@+id/photosRecyclerViewHHSRSSurvey"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="@dimen/margin_standard"
+                        android:clipToPadding="false"
+                        android:overScrollMode="never"
+                        app:layout_constraintTop_toBottomOf="@id/photosLabelHHSRSSurvey" />
+
+                    <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                        android:id="@+id/internalLocationLabelHHSRSSurvey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_standard"
+                        android:layout_marginTop="31dp"
+                        android:fontFamily="@font/bold"
+                        android:text="@string/internal_location_label"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/photosRecyclerViewHHSRSSurvey"
+                        app:letterSpacingMultiplier="0.47" />
+
+                    <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="9dp"
+                        android:layout_marginEnd="@dimen/margin_standard"
+                        android:fontFamily="@font/italic"
+                        android:text="@string/multiple_options_hint"
+                        android:textSize="@dimen/text_size_xxsmall"
+                        app:layout_constraintBottom_toBottomOf="@+id/internalLocationLabelHHSRSSurvey"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/internalLocationLabelHHSRSSurvey"
+                        app:layout_constraintTop_toTopOf="@+id/internalLocationLabelHHSRSSurvey"
+                        app:letterSpacingMultiplier="0.6" />
+
+                    <uk.co.savills.stonewood.util.customview.AppRecyclerView
+                        android:id="@+id/internalLocationRecyclerViewHHSRSSurvey"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginTop="11dp"
+                        android:overScrollMode="never"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/internalLocationLabelHHSRSSurvey" />
+
+                    <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                        android:id="@+id/internalLocationOtherLabelHHSRSSurvey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/margin_standard"
+                        android:layout_marginTop="23dp"
+                        android:fontFamily="@font/bold"
+                        android:labelFor="@id/otherInternalLocationEditTextHHSRSSurvey"
+                        android:text="@string/other_location_label"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/internalLocationRecyclerViewHHSRSSurvey"
+                        app:letterSpacingMultiplier="0.47"
+                        app:visible="@{viewModel.isOtherInternalLocationInfoRequired}" />
+
+                    <EditText
+                        android:id="@+id/otherInternalLocationEditTextHHSRSSurvey"
+                        style="@style/EditTextStyle.Multiline"
+                        android:layout_width="match_parent"
+                        android:layout_height="84dp"
+                        android:layout_marginHorizontal="@dimen/margin_standard"
+                        android:layout_marginTop="15dp"
+                        android:text="@={viewModel.otherInternalLocationInfo}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/internalLocationOtherLabelHHSRSSurvey"
+                        app:visible="@{viewModel.isOtherInternalLocationInfoRequired}" />
+
+                    <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                        android:id="@+id/externalLocationLabelHHSRSSurvey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_standard"
+                        android:layout_marginTop="31dp"
+                        android:fontFamily="@font/bold"
+                        android:text="@string/external_location_label"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/otherInternalLocationEditTextHHSRSSurvey"
+                        app:letterSpacingMultiplier="0.47" />
+
+                    <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="9dp"
+                        android:layout_marginEnd="@dimen/margin_standard"
+                        android:fontFamily="@font/italic"
+                        android:text="@string/multiple_options_hint"
+                        android:textSize="@dimen/text_size_xxsmall"
+                        app:layout_constraintBottom_toBottomOf="@+id/externalLocationLabelHHSRSSurvey"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/externalLocationLabelHHSRSSurvey"
+                        app:layout_constraintTop_toTopOf="@+id/externalLocationLabelHHSRSSurvey"
+                        app:letterSpacingMultiplier="0.6" />
+
+                    <uk.co.savills.stonewood.util.customview.AppRecyclerView
+                        android:id="@+id/externalLocationRecyclerViewHHSRSSurvey"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginTop="11dp"
+                        android:overScrollMode="never"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/externalLocationLabelHHSRSSurvey" />
+
+                    <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                        android:id="@+id/externalLocationOtherLabelHHSRSSurvey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/margin_standard"
+                        android:layout_marginTop="23dp"
+                        android:fontFamily="@font/bold"
+                        android:labelFor="@id/otherExternalLocationEditTextHHSRSSurvey"
+                        android:text="@string/other_location_label"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/externalLocationRecyclerViewHHSRSSurvey"
+                        app:letterSpacingMultiplier="0.47"
+                        app:visible="@{viewModel.isOtherExternalLocationInfoRequired}" />
+
+                    <EditText
+                        android:id="@+id/otherExternalLocationEditTextHHSRSSurvey"
+                        style="@style/EditTextStyle.Multiline"
+                        android:layout_width="match_parent"
+                        android:layout_height="84dp"
+                        android:layout_marginHorizontal="@dimen/margin_standard"
+                        android:layout_marginTop="15dp"
+                        android:text="@={viewModel.otherExternalLocationInfo}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/externalLocationOtherLabelHHSRSSurvey"
+                        app:visible="@{viewModel.isOtherExternalLocationInfoRequired}" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </uk.co.savills.stonewood.util.customview.AppScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

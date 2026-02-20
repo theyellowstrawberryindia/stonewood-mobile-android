@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="projectListViewModel"
+            type="uk.co.savills.stonewood.screen.projectlist.ProjectListViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundWhite"
+        android:orientation="vertical"
+        tools:context=".screen.projectlist.ProjectListFragment">
+
+        <uk.co.savills.stonewood.util.customview.StandardToolbar
+            android:id="@+id/toolbarProjectList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            app:isBackButtonVisible="false"
+            app:isLoading="@{projectListViewModel.isBusy}"
+            app:isLogoVisible="true"
+            app:optionImage="@drawable/ic_logout"
+            app:optionText="@string/logout"
+            app:title="@string/select_survey_project" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <uk.co.savills.stonewood.util.customview.EmptyView
+                android:id="@+id/emptyViewProjectList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:header="@string/no_survey_project_empty_view_header"
+                app:image="@drawable/ic_no_project"
+                app:visibility="@{projectListViewModel.projects}" />
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/refreshLayoutProjectList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/transparent">
+
+                <uk.co.savills.stonewood.util.customview.AppRecyclerView
+                    android:id="@+id/recyclerViewProjectList"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_standard"
+            android:fontFamily="@font/light"
+            android:text="@{@string/version(projectListViewModel.appVersion)}"
+            android:textSize="@dimen/text_size_medium"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </LinearLayout>
+</layout>

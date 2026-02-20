@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/containerStockSurveyElement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/backgroundWhite">
+
+        <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+            android:id="@+id/titleStockSurveyElement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_standard"
+            android:layout_marginTop="16dp"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/bold"
+            android:textSize="@dimen/text_size_xlarge"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toStartOf="@+id/lifeTextStockSurveyElement"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:letterSpacingMultiplier="0.23" />
+
+        <TextView
+            android:id="@+id/lifeTextStockSurveyElement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_standard"
+            android:fontFamily="@font/regular"
+            android:textSize="@dimen/text_size_medium"
+            app:layout_constraintBottom_toBottomOf="@+id/titleStockSurveyElement"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/titleStockSurveyElement" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/contentViewStockSurveyElement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/titleStockSurveyElement">
+
+            <uk.co.savills.stonewood.screen.survey.survey.stocksurvey.component.SubElementView
+                android:id="@+id/subElementViewStockSurveyElement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/extraInfoViewStockSurveyElement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/subElementViewStockSurveyElement">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/asBuiltLayoutStockSurveyElement"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                        android:id="@+id/asBuiltLabelStockSurveyElement"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/margin_standard"
+                        android:layout_marginTop="24dp"
+                        android:fontFamily="@font/bold"
+                        android:text="@string/as_built"
+                        android:textSize="@dimen/text_size_small"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:letterSpacingMultiplier="0.23" />
+
+                    <Button
+                        android:id="@+id/notAsBuiltButtonStockSurveyElement"
+                        style="@style/ButtonStyle"
+                        android:layout_width="82dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/background_button_deselect"
+                        android:fontFamily="@font/regular"
+                        android:letterSpacing="0.03"
+                        android:text="@string/no"
+                        android:textSize="@dimen/text_size_small"
+                        app:layout_constraintStart_toStartOf="@+id/asBuiltLabelStockSurveyElement"
+                        app:layout_constraintTop_toBottomOf="@+id/asBuiltLabelStockSurveyElement" />
+
+                    <Button
+                        android:id="@+id/asBuiltButtonStockSurveyElement"
+                        style="@style/ButtonStyle"
+                        android:layout_width="82dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="12dp"
+                        android:background="@drawable/background_button_deselect"
+                        android:fontFamily="@font/regular"
+                        android:letterSpacing="0.03"
+                        android:text="@string/yes"
+                        android:textSize="@dimen/text_size_small"
+                        app:layout_constraintBottom_toBottomOf="@+id/notAsBuiltButtonStockSurveyElement"
+                        app:layout_constraintStart_toEndOf="@+id/notAsBuiltButtonStockSurveyElement"
+                        app:layout_constraintTop_toTopOf="@+id/notAsBuiltButtonStockSurveyElement" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                    android:id="@+id/ageLabelStockSurveyElement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_standard"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/bold"
+                    android:text="@string/age"
+                    android:textSize="@dimen/text_size_small"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/asBuiltLayoutStockSurveyElement"
+                    app:letterSpacingMultiplier="0.23" />
+
+                <GridLayout
+                    android:id="@+id/ageBandGridStockSurveyElement"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="19dp"
+                    android:layout_marginTop="3dp"
+                    android:columnCount="4"
+                    android:orientation="horizontal"
+                    android:useDefaultMargins="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ageLabelStockSurveyElement" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/renewalRepairsLayoutStockSurveyElement"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ageBandGridStockSurveyElement">
+
+                    <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                        android:id="@+id/renewalLabelStockSurveyElement"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/margin_standard"
+                        android:fontFamily="@font/bold"
+                        android:text="@string/renewal"
+                        android:textSize="@dimen/text_size_small"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:letterSpacingMultiplier="0.23" />
+
+                    <GridLayout
+                        android:id="@+id/renewalBandGridStockSurveyElement"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="19dp"
+                        android:layout_marginTop="3dp"
+                        android:columnCount="4"
+                        android:orientation="horizontal"
+                        android:useDefaultMargins="false"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/renewalLabelStockSurveyElement" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/renewalQuantityLayoutStockSurveyElement"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        app:layout_constraintTop_toBottomOf="@+id/renewalBandGridStockSurveyElement">
+
+                        <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                            android:id="@+id/renewalQuantityLabelStockSurveyElement"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_standard"
+                            android:fontFamily="@font/regular"
+                            android:text="@string/renewal_quantity"
+                            android:textSize="@dimen/text_size_xsmall"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:letterSpacingMultiplier="0.23" />
+
+                        <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                            android:id="@+id/renewalUnitStockSurveyElement"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:fontFamily="@font/regular"
+                            android:textSize="@dimen/text_size_xsmall"
+                            app:layout_constraintBottom_toBottomOf="@+id/renewalQuantityLabelStockSurveyElement"
+                            app:layout_constraintStart_toEndOf="@+id/renewalQuantityLabelStockSurveyElement"
+                            app:layout_constraintTop_toTopOf="@+id/renewalQuantityLabelStockSurveyElement"
+                            app:letterSpacingMultiplier="0.23" />
+
+                        <EditText
+                            android:id="@+id/renewalQuantityEditTextStockSurveyElement"
+                            style="@style/EditTextStyle"
+                            android:textColor="@drawable/edit_text_selector"
+                            android:layout_width="140dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="6dp"
+                            android:gravity="center"
+                            android:hint="@string/quantity_hint"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:padding="10dp"
+                            android:textColorHint="@color/textLight"
+                            android:textSize="@dimen/text_size_small"
+                            app:layout_constraintStart_toStartOf="@+id/renewalQuantityLabelStockSurveyElement"
+                            app:layout_constraintTop_toBottomOf="@+id/renewalQuantityLabelStockSurveyElement" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/additionalRenewalQuantityLayoutStockSurveyElement"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            app:layout_constraintStart_toEndOf="@+id/renewalQuantityEditTextStockSurveyElement"
+                            app:layout_constraintTop_toTopOf="@+id/renewalQuantityLabelStockSurveyElement">
+
+                            <ImageView
+                                android:id="@+id/arrowImageStockSurveyElement"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_arrow_long"
+                                app:layout_constraintBottom_toBottomOf="@+id/additionalQuantityEditTextStockSurveyElement"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/additionalQuantityEditTextStockSurveyElement" />
+
+                            <TextView
+                                android:id="@+id/multiplierHintStockSurveyElement"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/quantity_multiplier_hint"
+                                android:textSize="@dimen/text_size_xxsmall"
+                                android:visibility="gone"
+                                app:layout_constraintBottom_toTopOf="@+id/arrowImageStockSurveyElement"
+                                app:layout_constraintEnd_toEndOf="@+id/arrowImageStockSurveyElement"
+                                app:layout_constraintStart_toStartOf="@+id/arrowImageStockSurveyElement" />
+
+                            <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                                android:id="@+id/additionalRenewalQuantityLabelStockSurveyElement"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="6dp"
+                                android:fontFamily="@font/regular"
+                                android:labelFor="@id/additionalQuantityEditTextStockSurveyElement"
+                                android:text="@string/additional_quantity"
+                                android:textSize="@dimen/text_size_xsmall"
+                                app:layout_constraintBottom_toTopOf="@+id/additionalQuantityEditTextStockSurveyElement"
+                                app:layout_constraintEnd_toEndOf="@+id/additionalQuantityEditTextStockSurveyElement"
+                                app:layout_constraintStart_toEndOf="@+id/minusButtonStockSurveyElement"
+                                app:letterSpacingMultiplier="0.23" />
+
+                            <ImageView
+                                android:id="@+id/minusButtonStockSurveyElement"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginStart="10dp"
+                                android:background="?selectableItemBackground"
+                                android:src="@drawable/ic_minus"
+                                app:layout_constraintBottom_toBottomOf="@+id/additionalQuantityEditTextStockSurveyElement"
+                                app:layout_constraintStart_toEndOf="@+id/arrowImageStockSurveyElement"
+                                app:layout_constraintTop_toTopOf="@+id/additionalQuantityEditTextStockSurveyElement" />
+
+                            <EditText
+                                android:id="@+id/additionalQuantityEditTextStockSurveyElement"
+                                style="@style/EditTextStyle"
+                                android:layout_width="120dp"
+                                android:layout_height="40dp"
+                                android:layout_marginStart="8dp"
+                                android:gravity="center"
+                                android:imeOptions="actionDone"
+                                android:inputType="number"
+                                android:padding="10dp"
+                                android:textColorHint="@color/textLight"
+                                android:textSize="@dimen/text_size_small"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/minusButtonStockSurveyElement" />
+
+                            <ImageView
+                                android:id="@+id/plusButtonStockSurveyElement"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginStart="8dp"
+                                android:background="?selectableItemBackground"
+                                android:src="@drawable/ic_plus"
+                                app:layout_constraintBottom_toBottomOf="@+id/minusButtonStockSurveyElement"
+                                app:layout_constraintStart_toEndOf="@+id/additionalQuantityEditTextStockSurveyElement"
+                                app:layout_constraintTop_toTopOf="@+id/minusButtonStockSurveyElement" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/repairsLayoutStockSurveyElement"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@+id/renewalQuantityLayoutStockSurveyElement">
+
+                        <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                            android:id="@+id/repairLabelStockSurveyElement"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/margin_standard"
+                            android:fontFamily="@font/bold"
+                            android:text="@string/repairs"
+                            android:textSize="@dimen/text_size_small"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:letterSpacingMultiplier="0.23" />
+
+                        <Button
+                            android:id="@+id/noRepairsButtonStockSurveyElement"
+                            style="@style/ButtonStyle"
+                            android:layout_width="82dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@drawable/background_button_deselect"
+                            android:fontFamily="@font/regular"
+                            android:letterSpacing="0.03"
+                            android:text="@string/no"
+                            android:textSize="@dimen/text_size_small"
+                            app:layout_constraintStart_toStartOf="@+id/repairLabelStockSurveyElement"
+                            app:layout_constraintTop_toBottomOf="@+id/repairLabelStockSurveyElement" />
+
+                        <Button
+                            android:id="@+id/repairsButtonStockSurveyElement"
+                            style="@style/ButtonStyle"
+                            android:layout_width="82dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="12dp"
+                            android:background="@drawable/background_button_deselect"
+                            android:fontFamily="@font/regular"
+                            android:letterSpacing="0.03"
+                            android:text="@string/yes"
+                            android:textSize="@dimen/text_size_small"
+                            app:layout_constraintBottom_toBottomOf="@+id/noRepairsButtonStockSurveyElement"
+                            app:layout_constraintStart_toEndOf="@+id/noRepairsButtonStockSurveyElement"
+                            app:layout_constraintTop_toTopOf="@+id/noRepairsButtonStockSurveyElement" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/repairsViewStockSurveyElement"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/margin_standard"
+                            android:layout_marginTop="16dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/repairsButtonStockSurveyElement">
+
+                            <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                                android:id="@+id/repairCostLabelStockSurveyElement"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/regular"
+                                android:labelFor="@id/repairCostEditTextStockSurveyElement"
+                                android:text="@string/repair_cost_label"
+                                android:textSize="@dimen/text_size_xsmall"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:letterSpacingMultiplier="0.23" />
+
+                            <EditText
+                                android:id="@+id/repairCostEditTextStockSurveyElement"
+                                style="@style/EditTextStyle"
+                                android:layout_width="82dp"
+                                android:layout_height="@dimen/edit_text_height"
+                                android:layout_marginTop="8dp"
+                                android:gravity="center"
+                                android:imeOptions="actionDone"
+                                android:inputType="number"
+                                android:letterSpacing="0.02"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/repairCostLabelStockSurveyElement" />
+
+                            <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                                android:id="@+id/repairDescriptionLabelStockSurveyElement"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/regular"
+                                android:labelFor="@id/repairDescriptionEditTextStockSurveyElement"
+                                android:text="@string/repair_description_label"
+                                android:textSize="@dimen/text_size_xsmall"
+                                app:layout_constraintBottom_toBottomOf="@+id/repairCostLabelStockSurveyElement"
+                                app:layout_constraintStart_toStartOf="@+id/repairDescriptionEditTextStockSurveyElement"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:letterSpacingMultiplier="0.23" />
+
+                            <EditText
+                                android:id="@+id/repairDescriptionEditTextStockSurveyElement"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/edit_text_height"
+                                android:layout_marginStart="12dp"
+                                android:background="@drawable/background_edit_text"
+                                android:fontFamily="@font/regular"
+                                android:hint="@string/description_hint"
+                                android:inputType="textMultiLine"
+                                android:letterSpacing="0.02"
+                                android:paddingHorizontal="9dp"
+                                android:paddingVertical="6dp"
+                                android:textColorHint="@color/textLight"
+                                android:textSize="@dimen/text_size_small"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/repairCostEditTextStockSurveyElement"
+                                app:layout_constraintTop_toTopOf="@+id/repairCostEditTextStockSurveyElement"
+                                tools:ignore="LabelFor" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <uk.co.savills.stonewood.screen.survey.survey.stocksurvey.component.DateInputView
+                android:id="@+id/dateViewStockSurveyElement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/extraInfoViewStockSurveyElement"/>
+
+            <uk.co.savills.stonewood.screen.survey.survey.stocksurvey.component.PhotosView
+                android:id="@+id/photosViewStockSurveyElement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/extraInfoViewStockSurveyElement" />
+
+            <LinearLayout
+                android:id="@+id/notesViewStockSurveyElement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_standard"
+                android:layout_marginTop="24dp"
+                android:orientation="vertical"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/photosViewStockSurveyElement">
+
+                <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/bold"
+                    android:labelFor="@id/notesEditTextStockSurveyElement"
+                    android:text="@string/notes"
+                    android:textSize="@dimen/text_size_small"
+                    app:letterSpacingMultiplier="0.23" />
+
+                <EditText
+                    android:id="@+id/notesEditTextStockSurveyElement"
+                    style="@style/EditTextStyle.Multiline"
+                    android:layout_width="match_parent"
+                    android:layout_height="61dp"
+                    android:layout_marginTop="8dp" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginHorizontal="@dimen/margin_standard"
+            android:layout_marginTop="16dp"
+            android:background="@color/separatorDark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contentViewStockSurveyElement" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

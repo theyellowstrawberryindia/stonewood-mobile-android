@@ -1,0 +1,3 @@
+rootProject.name = "Stonewood"
+include ':app'
+include ':thumbmunkeys-lint-rules'

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/backgroundWhite">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/communalElementLayoutSubElementView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_standard"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/bold"
+            android:text="@string/communal_element_label"
+            android:textSize="@dimen/text_size_small" />
+
+        <uk.co.savills.stonewood.util.customview.ComboBox
+            android:id="@+id/communalComboBoxSubElementView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_standard"
+            android:layout_marginTop="8dp" />
+
+        <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+            android:id="@+id/dataLabelSubElementView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_standard"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/bold"
+            android:text="@string/data_label"
+            android:textSize="@dimen/text_size_small" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/dataButtonsLayoutSubElementView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:layout_marginHorizontal="@dimen/margin_standard"
+            android:layout_marginTop="8dp">
+
+            <Button
+                android:id="@+id/createNewButtonSubElementView"
+                style="@style/ButtonStyle"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:layout_marginEnd="6dp"
+                android:background="@drawable/background_button_deselect"
+                android:fontFamily="@font/regular"
+                android:letterSpacing="0.03"
+                android:text="@string/create_new"
+                android:textSize="@dimen/text_size_small" />
+
+            <Button
+                android:id="@+id/usePreviousButtonSubElementView"
+                style="@style/ButtonStyle"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp"
+                android:layout_height="40dp"
+                android:background="@drawable/background_button_deselect"
+                android:fontFamily="@font/regular"
+                android:letterSpacing="0.03"
+                android:text="@string/use_previously_accessed"
+                android:textSize="@dimen/text_size_small" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_standard"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/bold"
+            android:text="@string/type_label"
+            android:textSize="@dimen/text_size_small" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <uk.co.savills.stonewood.util.customview.ComboBox
+        android:id="@+id/subElementComboBoxSubElementView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_standard"
+        android:layout_marginTop="8dp"
+        android:labelFor="@id/userEntryEditTextSubElementView" />
+
+    <View
+        android:id="@+id/comboBoxSpacingSubElementView"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="24dp" />
+
+    <EditText
+        android:id="@+id/userEntryEditTextSubElementView"
+        style="@style/EditTextStyle.SingleLine"
+        android:layout_marginHorizontal="@dimen/margin_standard"
+        android:imeOptions="actionDone"
+        android:visibility="gone"
+        android:inputType="text" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

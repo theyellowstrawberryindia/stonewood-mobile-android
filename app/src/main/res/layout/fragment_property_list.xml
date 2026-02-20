@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="uk.co.savills.stonewood.screen.propertylist.PropertyListViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".screen.propertylist.PropertyListFragment">
+
+        <uk.co.savills.stonewood.util.customview.StandardToolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:infoText="@{viewModel.searchText.length == 0 ? @string/property_count(viewModel.propertyCount) : @string/filtered_property_count(viewModel.propertyCount)}"
+            app:isInfoTextVisible = "@{viewModel.propertyCount != null}"
+            app:title="@string/property_list_title" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/backgroundWhite">
+
+            <EditText
+                android:id="@+id/searchEditTextPropertyList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_standard"
+                android:layout_marginTop="20dp"
+                android:background="@color/backgroundGray"
+                android:fontFamily="@font/light"
+                android:hint="@string/address_search_hint"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:paddingHorizontal="16dp"
+                android:paddingTop="13dp"
+                android:paddingBottom="16dp"
+                android:text="@={viewModel.searchText}"
+                android:textColorHint="@color/textLight"
+                android:textSize="@dimen/text_size_medium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/statusLabelPropertyList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/bold"
+                android:text="@string/property_status_label"
+                android:textSize="@dimen/text_size_xsmall"
+                app:layout_constraintStart_toStartOf="@+id/searchEditTextPropertyList"
+                app:layout_constraintTop_toBottomOf="@+id/searchEditTextPropertyList" />
+
+            <uk.co.savills.stonewood.util.customview.LegendView
+                android:id="@+id/surveyedLegendPropertyList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                app:indicatorColor="@color/property_surveyed"
+                app:layout_constraintBottom_toBottomOf="@+id/statusLabelPropertyList"
+                app:layout_constraintStart_toEndOf="@id/statusLabelPropertyList"
+                app:layout_constraintTop_toTopOf="@+id/statusLabelPropertyList"
+                app:title="@string/property_surveyed_legend" />
+
+            <uk.co.savills.stonewood.util.customview.LegendView
+                android:id="@+id/contactDetailsLegendPropertyList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                app:indicatorColor="@color/property_contact_available"
+                app:layout_constraintBottom_toBottomOf="@+id/statusLabelPropertyList"
+                app:layout_constraintStart_toEndOf="@id/surveyedLegendPropertyList"
+                app:layout_constraintTop_toTopOf="@+id/statusLabelPropertyList"
+                app:title="@string/property_contact_available_label" />
+
+            <uk.co.savills.stonewood.util.customview.LegendView
+                android:id="@+id/voidLegendPropertyList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                app:indicatorColor="@color/property_void"
+                app:layout_constraintBottom_toBottomOf="@+id/statusLabelPropertyList"
+                app:layout_constraintStart_toEndOf="@id/contactDetailsLegendPropertyList"
+                app:layout_constraintTop_toTopOf="@+id/statusLabelPropertyList"
+                app:title="@string/property_void_label" />
+
+            <uk.co.savills.stonewood.util.customview.LegendView
+                android:id="@+id/noAccessLegendPropertyList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                app:indicatorColor="@color/property_failed_or_no_access"
+                app:layout_constraintBottom_toBottomOf="@+id/statusLabelPropertyList"
+                app:layout_constraintStart_toEndOf="@id/voidLegendPropertyList"
+                app:layout_constraintTop_toTopOf="@+id/statusLabelPropertyList"
+                app:title="@string/property_no_access_label" />
+
+            <uk.co.savills.stonewood.util.customview.LegendView
+                android:id="@+id/repeatedNoAccessLegendPropertyList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                app:indicatorColor="@color/property_repeated_failed_or_no_access"
+                app:layout_constraintBottom_toBottomOf="@+id/statusLabelPropertyList"
+                app:layout_constraintStart_toEndOf="@id/noAccessLegendPropertyList"
+                app:layout_constraintTop_toTopOf="@+id/statusLabelPropertyList"
+                app:title="@string/property_repeated_no_access_label" />
+
+            <uk.co.savills.stonewood.util.customview.LegendView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                app:indicatorColor="@color/property_private_or_refused"
+                app:layout_constraintBottom_toBottomOf="@+id/statusLabelPropertyList"
+                app:layout_constraintStart_toEndOf="@id/repeatedNoAccessLegendPropertyList"
+                app:layout_constraintTop_toTopOf="@+id/statusLabelPropertyList"
+                app:title="@string/property_refusal_label" />
+
+            <View
+                android:id="@+id/separatorPropertyList"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/separator_size"
+                android:layout_marginTop="16dp"
+                android:background="@color/separator"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/statusLabelPropertyList" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/separatorPropertyList">
+
+                <uk.co.savills.stonewood.util.customview.EmptyView
+                    android:id="@+id/emptyViewPropertyList"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/backgroundWhite"
+                    app:header="@string/no_property_empty_view_header"
+                    app:image="@drawable/ic_no_address"
+                    android:visibility="gone"
+                    app:visible="@{viewModel.propertyCount != null &amp;&amp; viewModel.propertyCount == 0}" />
+
+                <uk.co.savills.stonewood.util.customview.AppRecyclerView
+                    android:id="@+id/propertyRecyclerViewPropertyList"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            </FrameLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</layout>

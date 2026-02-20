@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="noAccessEntry"
+            type="uk.co.savills.stonewood.model.survey.noaccess.NoAccessEntryModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingVertical="7dp">
+
+        <uk.co.savills.stonewood.util.customview.LetterSpacedTextView
+            android:id="@+id/dateTextNoAccessEntry"
+            android:layout_width="64dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/regular"
+            android:maxLines="1"
+            android:textSize="@dimen/text_size_xxsmall"
+            app:dateTime="@{noAccessEntry.createdAt}"
+            app:letterSpacingMultiplier="0.2" />
+
+        <TextView
+            android:id="@+id/reasonTextNoAccessEntry"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="33dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/regular"
+            android:text="@{noAccessEntry.reason}"
+            android:textSize="@dimen/text_size_xxsmall"
+            app:letterSpacingMultiplier="0.2" />
+    </LinearLayout>
+</layout>
