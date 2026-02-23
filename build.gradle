@@ -1,17 +1,18 @@
 buildscript {
     ext {
-        kotlinVersion = '1.8.22'
-        navigationVersion = '2.3.2'
+        kotlinVersion = '1.9.22'
+        navigationVersion = '2.4.1'
     }
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:7.2.2"
+        classpath 'com.android.tools.build:gradle:8.9.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion"
-        classpath "com.google.gms:google-services:4.3.4"
+        classpath 'com.google.gms:google-services:4.3.10'
+        classpath "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:1.9.22-1.0.17"
     }
 }
 
