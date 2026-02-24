@@ -32,7 +32,7 @@ class RatingAdapter(
 
     fun setSelectedRating(rating: HHSRSElementRating?) {
         selectedRating = rating
-//        notifyDataSetChanged()
+        notifyDataSetChanged()
     }
 
     class ViewHolder private constructor(

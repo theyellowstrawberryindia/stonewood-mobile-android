@@ -23,7 +23,7 @@ class NavigationEventObserver(private val navController: NavController) :
                 val predefinedNavOptions = requireNotNull(navAction).navOptions
 
                 predefinedNavOptions?.apply {
-                    navOptionsBuilder.setPopUpTo(popUpTo, isPopUpToInclusive)
+                    navOptionsBuilder.setPopUpTo(getPopUpTo(), isPopUpToInclusive())
                         .setLaunchSingleTop(shouldLaunchSingleTop())
                 }
 

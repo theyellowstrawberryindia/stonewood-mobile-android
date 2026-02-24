@@ -1,6 +1,5 @@
 package uk.co.savills.stonewood.util.mapper
 
-import android.util.Log
 import uk.co.savills.stonewood.model.AppVersionModel
 import uk.co.savills.stonewood.model.AuthTokenModel
 import uk.co.savills.stonewood.model.LocationModel
@@ -130,12 +129,12 @@ fun mapToModel(project: ProjectDto): ProjectModel {
         ProjectModel(
             id,
             name,
-            "description.orEmpty()",
+            description.orEmpty(),
             surveys,
             externalOnlyAvailable,
             isRepairsAvailable,
             numberOfExternalBlockPhotos,
-            false
+            isClosed
         )
     }
 }

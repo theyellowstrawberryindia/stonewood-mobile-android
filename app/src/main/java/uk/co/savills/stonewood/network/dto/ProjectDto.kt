@@ -19,25 +19,7 @@ data class ProjectDto(
     val riskAssessmentSurveyName: String?,
     val energySurveyName: String?,
     val externalOnlyAvailable: Boolean,
-    val isRepairsAvailable: Boolean = false,
+    val isRepairsAvailable: Boolean,
     val isClosed: Boolean = true,
     val numberOfExternalBlockPhotos: Int = 0
 )
-//{
-//        "name": "swapTestProject",
-//        "description": null,
-//        "riskAssessmentSurvey": true,
-//        "riskAssessmentSurveyName": null,
-//        "qualityStandardSurvey": true,
-//        "qualityStandardSurveyName": null,
-//        "energySurveyName": null,
-//        "stockConditionSurvey": true,
-//        "stockConditionSurveyName": null,
-//        "hhsrsSurvey": true,
-//        "hhsrsSurveyName": null,
-//        "externalOnlyAvailable": false,
-//        "stockSurveyExcelSynced": true,
-//        "id": 3,
-//        "createdAt": "2025-07-14T10:29:04.082804Z",
-//        "updatedAt": "2025-07-14T10:29:04.082804Z"
-//    }

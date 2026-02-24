@@ -10,10 +10,14 @@ class ProjectViewModelFactory(
     private val application: Application,
     private val locationTracker: LocationTracker
 ) : ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(ProjectViewModel::class.java)) {
-            return ProjectViewModel(application, locationTracker) as T
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        return when {
+            modelClass.isAssignableFrom(ProjectViewModel::class.java) -> {
+                ProjectViewModel(application, locationTracker) as T
+            }
+            else -> {
+                throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
+            }
         }
-        throw IllegalArgumentException("Unknown ViewModel class")
     }
 }

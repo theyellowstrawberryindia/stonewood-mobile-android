@@ -36,11 +36,11 @@ class NotificationService : FirebaseMessagingService() {
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
 
-//        appContainer.notificationManager.sendNotification(
-//            remoteMessage.title,
-//            remoteMessage.message,
-//            remoteMessage.bigText
-//        )
+        appContainer.notificationManager.sendNotification(
+            remoteMessage.title,
+            remoteMessage.message,
+            remoteMessage.bigText
+        )
     }
 
     private val RemoteMessage.title

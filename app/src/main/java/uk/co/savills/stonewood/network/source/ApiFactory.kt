@@ -1,6 +1,5 @@
 package uk.co.savills.stonewood.network.source
 
-import com.squareup.moshi.Moshi
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -65,12 +64,10 @@ class ApiFactory(
             .readTimeout(READ_WRITE_TIMEOUT_SECONDS, TimeUnit.SECONDS)
             .build()
 
-        val moshi = Moshi.Builder().build()
-
         val retrofit = Retrofit.Builder()
             .client(httpClient)
             .baseUrl(BASE_ADDRESS)
-            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .addConverterFactory(MoshiConverterFactory.create())
             .addCallAdapterFactory(DeferredCallAdapterFactory())
             .build()
 

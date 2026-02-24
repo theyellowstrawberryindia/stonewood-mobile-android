@@ -1,0 +1,44 @@
+repositories {
+//    jcenter()
+}
+
+configurations {
+    ktlint
+}
+
+dependencies {
+    lintChecks project(path: ':thumbmunkeys-lint-rules')
+
+    ktlint "com.pinterest:ktlint:0.37.2"
+}
+
+android {
+    lintOptions {
+        error "NewerVersionAvailable", "LogConditional", "UnusedIds", "EasterEgg",
+                "ConvertToWebp", "IconExpectedSize", "DuplicateStrings", "TypographyQuotes",
+                "NegativeMargin"
+
+        warningsAsErrors true
+    }
+
+    applicationVariants.all {
+        def lintTask = tasks["lint${name.capitalize()}"]
+        assembleProvider.get().dependsOn.add(lintTask)
+    }
+}
+
+task ktlint(type: JavaExec, group: "verification") {
+    description = "Check Kotlin code style."
+    classpath = configurations.ktlint
+    main = "com.pinterest.ktlint.Main"
+    args "src/**/*.kt", "--experimental"
+}
+
+preBuild.dependsOn ktlint
+
+task ktlintFormat(type: JavaExec, group: "formatting") {
+    description = "Fix Kotlin code style deviations."
+    classpath = configurations.ktlint
+    main = "com.pinterest.ktlint.Main"
+    args "-F", "src/**/*.kt"
+}

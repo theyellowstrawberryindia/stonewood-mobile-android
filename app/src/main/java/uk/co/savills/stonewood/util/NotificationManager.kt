@@ -37,7 +37,7 @@ class NotificationManager(
             .setOngoing(false)
             .setWhen(0)
             .setSmallIcon(R.drawable.ic_notification)
-            .setContentIntent(PendingIntent.getActivity(appContext, 0, launchActivityIntent, PendingIntent.FLAG_IMMUTABLE))
+            .setContentIntent(PendingIntent.getActivity(appContext, 0, launchActivityIntent, 0))
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setVibrate(LongArray(0))
             .setContentText(message)

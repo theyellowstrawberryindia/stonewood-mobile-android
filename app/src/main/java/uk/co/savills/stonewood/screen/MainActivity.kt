@@ -1,6 +1,7 @@
 package uk.co.savills.stonewood.screen
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.navigation.fragment.NavHostFragment
@@ -40,10 +41,14 @@ class MainActivity : LocationTrackingActivity(), ServerConnectionErrorHandler {
     }
 
     private val navController by lazy {
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.navigationHostFragmentMain) as NavHostFragment
-
-        navHostFragment.navController
+        try {
+            val navHostFragment =
+                supportFragmentManager.findFragmentById(R.id.navigationHostFragmentMain) as NavHostFragment
+            navHostFragment.navController
+        } catch (e: Exception) {
+            Log.e("MainActivity", "Error getting navController", e)
+            throw e
+        }
     }
 
     private lateinit var appUpdateDialog: StandardDialog
@@ -51,44 +56,92 @@ class MainActivity : LocationTrackingActivity(), ServerConnectionErrorHandler {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setTheme(R.style.AppTheme)
-        setContentView(R.layout.activity_main)
-        setNavigationGraph()
-        setBindings()
+        try {
+            Log.d("MainActivity", "onCreate() started")
+
+            setTheme(R.style.AppTheme)
+            setContentView(R.layout.activity_main)
+
+            Log.d("MainActivity", "Content view set, setting navigation graph")
+            setNavigationGraph()
+
+            Log.d("MainActivity", "Navigation graph set, setting bindings")
+            setBindings()
+
+            Log.d("MainActivity", "onCreate() completed successfully")
+        } catch (e: Exception) {
+            Log.e("MainActivity", "Fatal error in onCreate", e)
+            e.printStackTrace()
+            finish()
+        }
     }
 
     override fun onStart() {
         super.onStart()
 
-//        if (!BuildConfig.DEBUG) viewModel.evaluateAppVersion()
+        try {
+            if (!BuildConfig.DEBUG) {
+                viewModel.evaluateAppVersion()
+            }
+        } catch (e: Exception) {
+            Log.e("MainActivity", "Error in onStart", e)
+        }
     }
 
     private fun setNavigationGraph() {
-        val navGraph = navController.navInflater.inflate(R.navigation.navigation_graph)
+        try {
+            val navGraph = navController.navInflater.inflate(R.navigation.navigation_graph)
 
-        navGraph.startDestination =
-            if (viewModel.isLoggedIn) {
-                if (viewModel.shouldChangePassword) R.id.changePasswordFragment else R.id.projectListFragment
+            val destination = if (viewModel.isLoggedIn) {
+                if (viewModel.shouldChangePassword) {
+                    R.id.changePasswordFragment
+                } else {
+                    R.id.projectListFragment
+                }
             } else {
                 R.id.loginFragment
             }
 
-        navController.graph = navGraph
+            Log.d("MainActivity", "Setting start destination to: $destination")
+            navGraph.setStartDestination(destination)
+            navController.graph = navGraph
+            Log.d("MainActivity", "Navigation graph set successfully")
+        } catch (e: Exception) {
+            Log.e("MainActivity", "Error setting navigation graph", e)
+            throw e
+        }
     }
 
     fun hideKeyboard(view: View) {
-        currentFocus?.clearFocus()
-        view.hideKeyboard()
+        try {
+            currentFocus?.clearFocus()
+            view.hideKeyboard()
+        } catch (e: Exception) {
+            Log.e("MainActivity", "Error hiding keyboard", e)
+        }
     }
 
     private fun setBindings() {
-        viewModel.navigationEvent.observe(this, NavigationEventObserver(navController))
+        try {
+            viewModel.navigationEvent.observe(this, NavigationEventObserver(navController))
 
-        viewModel.appUpdateAvailable.observe(this) { appUpdateType ->
-            if (::appUpdateDialog.isInitialized) appUpdateDialog.dismiss()
+            viewModel.appUpdateAvailable.observe(this) { appUpdateType ->
+                try {
+                    if (::appUpdateDialog.isInitialized) {
+                        appUpdateDialog.dismiss()
+                    }
 
-            appUpdateDialog = getAppUpdateAvailableDialog(appUpdateType == AppUpdateType.MAJOR)
-            appUpdateDialog.show()
+                    appUpdateDialog = getAppUpdateAvailableDialog(appUpdateType == AppUpdateType.MAJOR)
+                    appUpdateDialog.show()
+                } catch (e: Exception) {
+                    Log.e("MainActivity", "Error showing app update dialog", e)
+                }
+            }
+
+            Log.d("MainActivity", "Bindings set successfully")
+        } catch (e: Exception) {
+            Log.e("MainActivity", "Error setting bindings", e)
+            throw e
         }
     }
 
@@ -97,7 +150,11 @@ class MainActivity : LocationTrackingActivity(), ServerConnectionErrorHandler {
             .setTitle(R.string.standard_dialog_header)
             .setDescription(R.string.app_update_available_dialog_message)
             .setPositiveButton(R.string.app_update_available_dialog_button_text) {
-                goToAppStore()
+                try {
+                    goToAppStore()
+                } catch (e: Exception) {
+                    Log.e("MainActivity", "Error going to app store", e)
+                }
             }
             .setCancellable(!isMajorUpdate)
 
@@ -109,18 +166,31 @@ class MainActivity : LocationTrackingActivity(), ServerConnectionErrorHandler {
     }
 
     override fun onApiError(message: String) {
-        serverErrorDialog
-            .setDescription(message)
-            .show()
+        try {
+            serverErrorDialog
+                .setDescription(message)
+                .show()
+        } catch (e: Exception) {
+            Log.e("MainActivity", "Error showing server error dialog", e)
+        }
     }
 
-    override fun onNoConnectionError() = noConnectionErrorDialog.show()
+    override fun onNoConnectionError() {
+        try {
+            noConnectionErrorDialog.show()
+        } catch (e: Exception) {
+            Log.e("MainActivity", "Error showing no connection dialog", e)
+        }
+    }
 
     override fun onUnexpectedError(message: String) {
-        val errorMessage = getString(R.string.unexpected_api_error_dialog_message, message)
-
-        unexpectedErrorDialog
-            .setDescription(errorMessage)
-            .show()
+        try {
+            val errorMessage = getString(R.string.unexpected_api_error_dialog_message, message)
+            unexpectedErrorDialog
+                .setDescription(errorMessage)
+                .show()
+        } catch (e: Exception) {
+            Log.e("MainActivity", "Error showing unexpected error dialog", e)
+        }
     }
 }

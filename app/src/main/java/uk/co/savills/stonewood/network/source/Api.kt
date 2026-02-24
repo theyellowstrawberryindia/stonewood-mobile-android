@@ -29,99 +29,97 @@ import uk.co.savills.stonewood.network.util.ApiResponse
 interface Api {
 
     @Headers("isAuthorizable: false")
-    @GET("/api/applicationInfo/1")
+    @GET("/applicationInfo/1")
     fun getAppVersionInfo(): Deferred<ApiResponse<AppVersionDto>>
 
     @Headers("isAuthorizable: false")
-    @POST("/api/users/authenticate")
+    @POST("/users/authenticate")
     fun login(@Body authRequest: AuthRequestDto): Deferred<ApiResponse<UserDto>>
 
-    @POST("/api/users/changePassword/{email}")
+    @POST("/users/changePassword/{email}")
     fun changePassword(
         @Path("email") email: String,
         @Body request: PasswordChangeRequestDto
     ): Deferred<ApiResponse<Unit>>
 
     @Headers("isAuthorizable: false")
-    @POST("/api/users/refresh")
+    @POST("/users/refresh")
     fun refreshAuthToken(@Body refreshRequest: RefreshAuthTokenRequestDto): Deferred<ApiResponse<UserDto>>
 
-//    https://20.39.224.104.nip.io/api/surveyprojects
-//    @GET("/api/surveyProjectUser/projects/{userId}")
-    @GET("/api/surveyprojects")
-    fun getAssignedProjects(): Deferred<ApiResponse<List<ProjectDto>>>
+    @GET("/surveyProjectUser/projects/{userId}")
+    fun getAssignedProjects(@Path("userId") userId: Int): Deferred<ApiResponse<List<ProjectDto>>>
 
-    @GET("/api/{projectId}/dataSync/dataDownload/{userId}")
+    @GET("/{projectId}/dataSync/dataDownload/{userId}")
     fun getSurveySpecifications(
         @Path("projectId") projectId: String,
         @Path("userId") userId: Int
     ): Deferred<ApiResponse<DataTransferResponseDto>>
 
-    @POST("/api/{projectId}/dataSync/dataTransfer")
+    @POST("/{projectId}/dataSync/dataTransfer")
     fun transferData(
         @Path("projectId") projectId: String,
         @Body dataTransferRequest: DataTransferRequestDto
     ): Deferred<ApiResponse<Unit>>
 
-    @POST("/api/{projectId}/dataSync/sendAlterationMail")
+    @POST("/{projectId}/dataSync/sendAlterationMail")
     fun sendAlterationEmail(
         @Path("projectId") projectId: String,
         @Body alterationDto: AlterationEmailDto
     ): Deferred<ApiResponse<Unit>>
 
-    @POST("/api/{projectId}/dataSync/uploadImage/{surveyorId}")
+    @POST("/{projectId}/dataSync/uploadImage/{surveyorId}")
     fun uploadImages(
         @Path("projectId") projectId: String,
         @Path("surveyorId") surveyorId: Int,
         @Body files: RequestBody
     ): Deferred<ApiResponse<Unit>>
 
-    @POST("/api/{projectId}/dataSync/images")
+    @POST("/{projectId}/dataSync/images")
     fun downloadCommunalImages(
         @Path("projectId") projectId: String,
         @Body request: List<ImageRequestDto>
     ): Deferred<ApiResponse<ResponseBody>>
 
-    @POST("/api/{projectId}/dataSync/externalEnergyPhotos")
+    @POST("/{projectId}/dataSync/externalEnergyPhotos")
     fun downloadExtBlockImages(
         @Path("projectId") projectId: String,
         @Body request: List<String>
     ): Deferred<ApiResponse<ResponseBody>>
 
-    @POST("/api/{projectId}/dataSync/uploadExternalEnergyPhotos/{surveyorId}")
+    @POST("/{projectId}/dataSync/uploadExternalEnergyPhotos/{surveyorId}")
     fun uploadExtBlockImages(
         @Path("projectId") projectId: String,
         @Path("surveyorId") surveyorId: Int,
         @Body files: RequestBody
     ): Deferred<ApiResponse<Unit>>
 
-    @PUT("/api/{projectId}/propertyAddresses/updateStatus")
+    @PUT("/{projectId}/propertyAddresses/updateStatus")
     fun updatePropertyStatus(
         @Path("projectId") projectId: String,
         @Query("id") id: Int,
         @Query("status") status: Int
     ): Deferred<ApiResponse<Unit>>
 
-    @GET("/api/{projectId}/dataSync/updatedProperties/{surveyorId}")
+    @GET("/{projectId}/dataSync/updatedProperties/{surveyorId}")
     fun getUpdatedProperties(
         @Path("projectId") projectId: String,
         @Path("surveyorId") surveyorId: Int
     ): Deferred<ApiResponse<List<PropertyDto>>>
 
     @SuppressLint("InvalidMethodName")
-    @POST("/api/{projectId}/dataSync/sendSevereIssueMail")
+    @POST("/{projectId}/dataSync/sendSevereIssueMail")
     fun reportHHSRSSevereIssue(
         @Path("projectId") projectId: String,
         @Body issue: HHSRSSevereIssueDto
     ): Deferred<ApiResponse<Unit>>
 
-    @POST("/api/{projectId}/backup/upload/{surveyorId}")
+    @POST("/{projectId}/backup/upload/{surveyorId}")
     fun uploadDataBackup(
         @Path("projectId") projectId: String,
         @Path("surveyorId") surveyorId: Int,
         @Body files: RequestBody
     ): Deferred<ApiResponse<Unit>>
 
-    @POST("/api/users/logout")
+    @POST("/users/logout")
     fun logout(): Deferred<ApiResponse<Unit>>
 }

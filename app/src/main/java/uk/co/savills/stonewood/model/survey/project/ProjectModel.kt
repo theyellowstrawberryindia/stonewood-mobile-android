@@ -24,22 +24,3 @@ data class ProjectModel(
         }
     }
 }
-
-//{
-//        "name": "swapTestProject",
-//        "description": null,
-//        "riskAssessmentSurvey": true,
-//        "riskAssessmentSurveyName": null,
-//        "qualityStandardSurvey": true,
-//        "qualityStandardSurveyName": null,
-//        "energySurveyName": null,
-//        "stockConditionSurvey": true,
-//        "stockConditionSurveyName": null,
-//        "hhsrsSurvey": true,
-//        "hhsrsSurveyName": null,
-//        "externalOnlyAvailable": false,
-//        "stockSurveyExcelSynced": true,
-//        "id": 3,
-//        "createdAt": "2025-07-14T10:29:04.082804Z",
-//        "updatedAt": "2025-07-14T10:29:04.082804Z"
-//    }

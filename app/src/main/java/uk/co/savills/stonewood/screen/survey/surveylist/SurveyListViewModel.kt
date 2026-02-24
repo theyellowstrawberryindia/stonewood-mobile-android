@@ -95,8 +95,8 @@ class SurveyListViewModel(application: Application) : BaseViewModel(application)
             val isEnergySurveyPresent = surveys.any { it.type == SurveyType.ENERGY }
 
             val needsValidation = (isStockSurveyPresent && isEnergySurveyPresent && validations.isNotEmpty()) ||
-                (isStockSurveyPresent && countMap[ValidationCategory.S_LOG]?.isNotEmpty() == true) ||
-                isEnergySurveyPresent && countMap[ValidationCategory.E_LOG]?.isNotEmpty() == true
+                    (isStockSurveyPresent && countMap[ValidationCategory.S_LOG]?.isNotEmpty() == true) ||
+                    isEnergySurveyPresent && countMap[ValidationCategory.E_LOG]?.isNotEmpty() == true
 
             surveys =
                 if (needsValidation) {
@@ -286,7 +286,10 @@ class SurveyListViewModel(application: Application) : BaseViewModel(application)
                     }
                 }
 
-                else -> {}
+                SurveyType.VALIDATION -> {
+                    // Validation survey doesn't prevent moving back
+                    // Continue to next survey
+                }
             }
         }
 

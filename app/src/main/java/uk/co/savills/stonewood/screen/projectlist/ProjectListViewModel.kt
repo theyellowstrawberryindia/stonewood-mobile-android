@@ -1,7 +1,6 @@
 package uk.co.savills.stonewood.screen.projectlist
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -47,12 +46,18 @@ class ProjectListViewModel(application: Application) : BaseViewModel(application
         _isRefreshingProjects.value = true
 
         viewModelScope.launch(Dispatchers.IO) {
+//            when (val result = apiService.getProjects()) {
+//                is Result.Success -> {
+//                    onProjectsFetched(result.data)
+//                }
+//                is Result.Error -> handleApiCallError(result.exception)
+//            }
             when (val result = apiService.getProjects()) {
                 is Result.Success -> {
                     onProjectsFetched(result.data)
                 }
                 is Result.Error -> handleApiCallError(result.exception)
-                else -> {}
+                else -> handleApiCallError(Exception("Unknown error"))
             }
         }.invokeOnCompletion {
             _isRefreshingProjects.postValue(false)

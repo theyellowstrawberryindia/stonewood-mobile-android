@@ -1,6 +1,8 @@
+
 @file:Suppress("InvalidMethodName")
 
 package uk.co.savills.stonewood
+
 
 const val PHOTO_DIRECTORY = "photos"
 const val DATA_BACKUP_DIRECTORY = "dataBackup"
@@ -15,14 +17,10 @@ val APP_CENTER_KEY
 
 val BASE_ADDRESS
     get() = when (BuildConfig.BUILD_TYPE) {
-//        "release" -> "https://api.surveys.savillsmdc.co.uk"
-//        "staging" -> "https://api.stonewood.thumbmunkeys.com"
-//        "development" -> "https://api.surveys.savillsmdc.co.uk"
-//        "debug" -> "https://api.stonewood.thumbmunkeys.com"
-        "release" -> "https://20.39.224.104.nip.io"
-        "staging" -> "https://20.39.224.104.nip.io"
-        "development" -> "https://20.39.224.104.nip.io"
-        "debug" -> "https://20.39.224.104.nip.io"
+        "release" -> "https://api.surveys.savillsmdc.co.uk"
+        "staging" -> "https://api.stonewood.thumbmunkeys.com"
+        "development" -> "https://api.dev.stonewood.thumbmunkeys.com"
+        "debug" -> "https://api.stonewood.thumbmunkeys.com"
         else -> throw IllegalStateException("${BuildConfig.BUILD_TYPE} build not configured")
     }
 

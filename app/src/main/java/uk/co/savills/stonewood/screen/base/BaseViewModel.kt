@@ -53,7 +53,7 @@ abstract class BaseViewModel(application: Application) :
             when (val result = call()) {
                 is Result.Success -> successCallback?.invoke(result.data)
                 is Result.Error -> handleApiCallError(result.exception)
-                null -> TODO()
+                null -> handleApiCallError(Exception("Unknown error"))
             }
         }.invokeOnCompletion {
             _isBusy.postValue(false)
@@ -74,7 +74,6 @@ abstract class BaseViewModel(application: Application) :
 
     open fun handleUnexpectedError(error: Exception) {
         AppAnalytics.trackError(error)
-        println(error.message)
         unexpectedError.postValue(error.message)
     }
 

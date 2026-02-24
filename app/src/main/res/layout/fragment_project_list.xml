@@ -40,7 +40,8 @@
                 android:layout_height="match_parent"
                 app:header="@string/no_survey_project_empty_view_header"
                 app:image="@drawable/ic_no_project"
-                app:visibility="@{projectListViewModel.projects}" />
+                app:visibility="@{projectListViewModel.projects}"
+                />
 
             <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                 android:id="@+id/refreshLayoutProjectList"

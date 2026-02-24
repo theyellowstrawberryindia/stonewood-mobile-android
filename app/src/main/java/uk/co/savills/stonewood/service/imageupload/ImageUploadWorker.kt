@@ -93,6 +93,7 @@ class ImageUploadWorker(
         private val WORK_TAG = ImageUploadWorker::class.simpleName.orEmpty()
 
         private const val IMAGE_UPLOAD_COUNT = 10
+        private const val INITIAL_BACKOFF_MILLIS = 30000L // 30 seconds
 
         fun beginWork(context: Context) {
             val workConstraints = Constraints.Builder()
@@ -103,7 +104,7 @@ class ImageUploadWorker(
                 .setConstraints(workConstraints)
                 .setBackoffCriteria(
                     BackoffPolicy.LINEAR,
-                    OneTimeWorkRequest.MIN_BACKOFF_MILLIS,
+                    INITIAL_BACKOFF_MILLIS,
                     TimeUnit.MILLISECONDS
                 )
                 .addTag(WORK_TAG)

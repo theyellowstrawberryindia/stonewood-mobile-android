@@ -107,13 +107,24 @@ class DataTransferViewModel(application: Application) : BaseViewModel(applicatio
                     dataTransferRequest.propertyEntries
                 )
             ) {
-                is Result.Success -> downloadSurveySpecifications {
-                    downloadCommunalImages {
-                        downloadExtBlockPhotos(::uploadSurveyData)
+                is Result.Success -> {
+                    downloadSurveySpecifications {
+                        downloadCommunalImages {
+                            downloadExtBlockPhotos(::uploadSurveyData)
+                        }
                     }
                 }
-                is Result.Error -> handleApiCallError(result.exception, mapOf())
-                null -> TODO()
+
+                is Result.Error -> {
+                    handleApiCallError(result.exception, mapOf())
+                }
+
+                else -> {
+                    handleUnexpectedError(
+                        Exception("Null result from sendAlterationEmail"),
+                        mapOf("When" to "Send alteration email")
+                    )
+                }
             }
         }.invokeOnCompletion {
             wifiLocker.releaseLock()
@@ -134,7 +145,12 @@ class DataTransferViewModel(application: Application) : BaseViewModel(applicatio
                     handleApiCallError(result.exception, info)
                 }
 
-                null -> TODO()
+                else -> {
+                    handleUnexpectedError(
+                        Exception("Unexpected result from getSurveySpecifications"),
+                        info
+                    )
+                }
             }
         } catch (e: Exception) {
             handleUnexpectedError(e, info)
@@ -178,13 +194,12 @@ class DataTransferViewModel(application: Application) : BaseViewModel(applicatio
                     }
 
                     is Result.Error -> {
-                        if (result.exception !is FileNotFoundException) {
-                            handleApiCallError(result.exception, info)
-                            return
-                        }
+                        handleApiCallError(result.exception, info)
                     }
 
-                    else -> {}
+                    else -> {
+                        handleApiCallError(Exception("Unknown error downloading communal image"))
+                    }
                 }
             }
 
@@ -235,11 +250,10 @@ class DataTransferViewModel(application: Application) : BaseViewModel(applicatio
 
                 is Result.Error -> {
                     handleApiCallError(result.exception, info)
-                    return
                 }
 
                 else -> {
-
+                    handleApiCallError(Exception("Unknown error downloading ext block photos"))
                 }
             }
 
@@ -285,7 +299,17 @@ class DataTransferViewModel(application: Application) : BaseViewModel(applicatio
                     handleApiCallError(result.exception, info)
                 }
 
-                else -> {}
+                else -> {
+                    val info = mutableMapOf(
+                        "When" to "Data upload",
+                        "Images uploaded" to images.size.toString(),
+                        "Energy external photos uploaded" to externalImages.size.toString()
+                    )
+                    handleUnexpectedError(
+                        Exception("Unexpected result from transferData"),
+                        info
+                    )
+                }
             }
         } catch (e: Exception) {
             val info = mutableMapOf(
@@ -321,7 +345,14 @@ class DataTransferViewModel(application: Application) : BaseViewModel(applicatio
                             return
                         }
 
-                        else -> {}
+                        else -> {
+                            info["Uploaded photo count"] = uploadedImageCount.toString()
+                            handleUnexpectedError(
+                                Exception("Unexpected result from uploadImageChunk"),
+                                info
+                            )
+                            return
+                        }
                     }
                 } catch (e: Exception) {
                     info["Uploaded photo count"] = uploadedImageCount.toString()
@@ -335,25 +366,31 @@ class DataTransferViewModel(application: Application) : BaseViewModel(applicatio
         successCallback.invoke()
     }
 
-    private suspend fun uploadImageChunk(chunk: List<File>): Result<Unit>? {
+    private suspend fun uploadImageChunk(chunk: List<File>): Result<Unit> {
         val result = apiService.uploadImages(appState.currentProject.id, chunk)
 
-        when (result) {
+        return when (result) {
             is Result.Success -> {
                 chunk.forEach { it.delete() }
+                photoUploadRetryCount = 0
+                result
             }
+
             is Result.Error -> {
                 if (result.exception is FileNotFoundException && photoUploadRetryCount < 3) {
                     photoUploadRetryCount++
-                    return uploadImageChunk(chunk)
+                    uploadImageChunk(chunk)
+                } else {
+                    photoUploadRetryCount = 0
+                    result
                 }
             }
 
-            else -> {}
+            else -> {
+                photoUploadRetryCount = 0
+                result as Result<Unit>
+            }
         }
-
-        photoUploadRetryCount = 0
-        return result
     }
 
     private suspend fun uploadExtBlockPhotos(
@@ -380,7 +417,14 @@ class DataTransferViewModel(application: Application) : BaseViewModel(applicatio
                             return
                         }
 
-                        else -> {}
+                        else -> {
+                            info["Uploaded photo count"] = uploadedImageCount.toString()
+                            handleUnexpectedError(
+                                Exception("Unexpected result from uploadExtBlockImageChunk"),
+                                info
+                            )
+                            return
+                        }
                     }
                 } catch (e: Exception) {
                     info["Uploaded photo count"] = uploadedImageCount.toString()
@@ -393,18 +437,30 @@ class DataTransferViewModel(application: Application) : BaseViewModel(applicatio
         successCallback.invoke()
     }
 
-    private suspend fun uploadExtBlockImageChunk(chunk: List<File>): Result<Unit>? {
+    private suspend fun uploadExtBlockImageChunk(chunk: List<File>): Result<Unit> {
         val result = apiService.uploadExtBlockImages(chunk)
 
-        if (result is Result.Error) {
-            if (result.exception is FileNotFoundException && photoUploadRetryCount < 3) {
-                photoUploadRetryCount++
-                return uploadImageChunk(chunk)
+        return when (result) {
+            is Result.Success -> {
+                photoUploadRetryCount = 0
+                result
+            }
+
+            is Result.Error -> {
+                if (result.exception is FileNotFoundException && photoUploadRetryCount < 3) {
+                    photoUploadRetryCount++
+                    uploadImageChunk(chunk)
+                } else {
+                    photoUploadRetryCount = 0
+                    result
+                }
+            }
+
+            else -> {
+                photoUploadRetryCount = 0
+                result as Result<Unit>
             }
         }
-
-        photoUploadRetryCount = 0
-        return result
     }
 
     private var properties = listOf<PropertyModel>()
@@ -554,10 +610,10 @@ class DataTransferViewModel(application: Application) : BaseViewModel(applicatio
         }
     }
 
-    private fun handleApiCallError(error: Exception, info: Map<String, String>) {
+    private fun handleApiCallError(error: Exception, info: Map<String, String> = emptyMap()) {
         val isConnectionIssue = error is SocketException ||
-            error is SSLException ||
-            error is SocketTimeoutException
+                error is SSLException ||
+                error is SocketTimeoutException
 
         if (!isConnectionIssue) faultyNetworkRetryCount = 0
 
@@ -581,7 +637,7 @@ class DataTransferViewModel(application: Application) : BaseViewModel(applicatio
         }
     }
 
-    private fun handleUnexpectedError(error: Exception, info: Map<String, String>) {
+    private fun handleUnexpectedError(error: Exception, info: Map<String, String> = emptyMap()) {
         reportError(error, info)
         unexpectedError.postValue(error.message)
     }

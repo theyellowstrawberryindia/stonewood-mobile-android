@@ -1,7 +1,6 @@
 package uk.co.savills.stonewood.service
 
 import android.annotation.SuppressLint
-import android.util.Log
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Deferred
 import okhttp3.MediaType.Companion.toMediaType
@@ -66,7 +65,7 @@ class ApiService(
     suspend fun getProjects(): Result<List<ProjectModel>>? {
         val userId = appState.profile?.id ?: return null
         return execute(
-            { api.getAssignedProjects() },
+            { api.getAssignedProjects(userId) },
             { it.map(::mapToModel) }
         )
     }

@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -36,17 +36,40 @@ class NoAccessViewModel(
 
     val remarks = MutableLiveData("")
 
-    val canSubmit = Transformations.switchMap(reason) { reason ->
-        Transformations.map(photoFilePaths) { !reason.isNullOrBlank() && it.size >= MIN_PHOTOS_REQUIRED }
+//    val canSubmit = Transformations.switchMap(reason) { reason ->
+//        Transformations.map(photoFilePaths) { !reason.isNullOrBlank() && it.size >= MIN_PHOTOS_REQUIRED }
+//    }
+//   val canSubmit: LiveData<Boolean> =
+//    Transformations.switchMap(reason) { selectedReason ->
+//        Transformations.map(photoFilePaths) { photos ->
+//            !selectedReason.isNullOrBlank() &&
+//                    photos.size >= MIN_PHOTOS_REQUIRED
+//        }
+//    }
+val canSubmit = MediatorLiveData<Boolean>().apply {
+
+    fun update() {
+        val selectedReason = reason.value
+        val photos = photoFilePaths.value ?: emptyList()
+
+        value = !selectedReason.isNullOrBlank() &&
+                photos.size >= MIN_PHOTOS_REQUIRED
     }
+
+    addSource(reason) { update() }
+    addSource(photoFilePaths) { update() }
+}
 
     private val _photoFilePaths = MutableLiveData<List<String>>(listOf())
     val photoFilePaths: LiveData<List<String>>
         get() = _photoFilePaths
 
-    val remainingPhotoCount = Transformations.map(photoFilePaths) {
-        max(0, MIN_PHOTOS_REQUIRED - it.size)
-    }
+//    val remainingPhotoCount = Transformations.map(photoFilePaths) {
+//        max(0, MIN_PHOTOS_REQUIRED - it.size)
+//    }
+    private val _remainingPhotoCount = MutableLiveData<Int>()
+    val remainingPhotoCount: LiveData<Int>
+        get() = _remainingPhotoCount
 
     val photoFolderName: String
         get() = "${appState.currentProject.id}_$propertyUPRN"
@@ -76,18 +99,25 @@ class NoAccessViewModel(
         _photoFilePaths.value = mutableListOf(filePath).apply {
             addAll(_photoFilePaths.getNonNullValue())
         }
+        updateRemaining()
+
     }
 
     fun onImageRemoved(filePath: String) {
         _photoFilePaths.value = _photoFilePaths.getNonNullValue().toMutableList().apply {
             remove(filePath)
         }
+        updateRemaining()
+
 
         viewModelScope.launch(Dispatchers.Default) {
             deletePhotoFile(filePath)
         }
     }
-
+    private fun updateRemaining() {
+        val count = _photoFilePaths.getNonNullValue().size
+        _remainingPhotoCount.value = max(0, MIN_PHOTOS_REQUIRED - count)
+    }
     fun submit() {
         val newFilePaths: MutableList<String> = mutableListOf()
 
